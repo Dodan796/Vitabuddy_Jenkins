@@ -33,10 +33,10 @@
 								<label>이름</label>
 								<input type="text" name="userName" value="${myInfo.userName}" required/>
 								<label>비밀번호 변경</label>
-			            		<input type="password"  name="userPwd" id="userPwd" oninput="pwCheck()"  required />
+			            		<input type="password"  name="userPwd" id="userPwd" oninput="pwCheck()" />  <!-- required 제거 -->
 			            		<p id="pwLeng"></p>
 			            		<label>비밀번호 확인</label>
-								<input type="password"   name="confirmPwd" id="confirmPwd" oninput="pwCheck()" required />
+								<input type="password"   name="confirmPwd" id="confirmPwd" oninput="pwCheck()" />   <!-- required 제거 -->
 								<p id="pwOk"></p>
 								<label>이메일 변경</label>
 								<input type="email" name="userEmail" id="userEmail" onchange="emailCheck()"  value="${myInfo.userEmail}" required />
@@ -55,7 +55,7 @@
 								<div class="zipcode">
 									<label>우편번호 입력</label>
 									<div class="box_rowContents">
-										<input type="text" name="userZipcode" id="userZipcode" required/>
+										<input type="text" name="userZipcode" id="userZipcode" value="${myInfo.userZipcode}" required/>  <!-- value값 추가 : form 페이지에 보일 수 있게 -->
 										<button type ="button" name="searchBtn" onclick=searchZip()>우편번호 찾기</button>
 									</div>
 									<label>주소 변경</label>

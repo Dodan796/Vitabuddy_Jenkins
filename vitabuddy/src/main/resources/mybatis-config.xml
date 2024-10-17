@@ -15,5 +15,6 @@
   <!-- MyBatis 매퍼 파일들을 등록 -->
   <mappers>
     <mapper resource="mapper/UserMapper.xml"/>
+    <mapper resource="mapper/ReviewMapper.xml"/>
   </mappers>
 </configuration>

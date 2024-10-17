@@ -226,9 +226,12 @@
 						</td> --%>
 						<td>
 						    <c:if test="${review.userId == sessionScope.sid}">
-							<a href="/supplement/supplementDetail/${supplementDetail.supId}/review/${review.reviewNo}/edit">
-							    <button type="button" class="editButton">수정</button>
-							</a>
+						        <button 
+						            class="editButton" 
+						            data-sup-id="${supplementDetail.supId}" 
+						            data-review-no="${review.reviewNo}">
+						            수정
+						        </button>
 						    </c:if>
 						</td>
 						
@@ -240,12 +243,14 @@
 							</td> --%>
 						<!-- 리뷰삭제 수정된 부분 -->
 						<td>
-							<c:if test="${review.userId == sessionScope.sid}">
-                    			<form method="post" action="/supplement/supplementDetail/${supplementDetail.supId}/review/${review.reviewNo}/delete" style="display:inline;">
-                        			<button type="submit">삭제</button>
-                    			</form>
-                			</c:if>
-                		</td>
+						    <c:if test="${review.userId == sessionScope.sid}">
+						        <button class="deleteReview" 
+						                data-review-id="${review.reviewNo}" 
+						                data-sup-id="${supplementDetail.supId}">
+						            삭제
+						        </button>
+						    </c:if>
+						</td>
 					</tr>
 
 					<!-- 작성자 정보 -->

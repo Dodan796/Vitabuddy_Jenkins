@@ -15,33 +15,27 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class LoginController {
 
-	@Autowired 
-	LoginService memService;
-	
-	// 1. 로그인 기능
-	@ResponseBody
-	@RequestMapping("/intro/login")
-	public String loginCheck(@RequestParam HashMap<String, Object> param, HttpSession session) {
-		
-		String result = memService.login(param);
-		if(result.equals("success")) {
-			session.setAttribute("sid", param.get("id"));
-			result = "success";
-		}
-		return result;
-	}
-	
-	// 2. 로그아웃 기능
-	@RequestMapping("/member/logout")
-	public String logout(HttpSession session) {
-		session.invalidate();
-		return "redirect:/home";
-	}
-	
-	
-	
-	
-	
-	
-	
+    @Autowired 
+    LoginService memService;
+    
+    // 1. 로그인 기능
+    @ResponseBody
+    @RequestMapping("/intro/login")
+    public String loginCheck(@RequestParam HashMap<String, Object> param, HttpSession session) {
+        
+        String result = memService.login(param);
+        if(result.equals("success")) {
+            // 세션에 userId 저장
+            session.setAttribute("userId", param.get("id"));  
+            return "success";
+        } 
+        return "fail";
+    }
+    
+    // 2. 로그아웃 기능
+    @RequestMapping("/member/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/home";
+    }
 }

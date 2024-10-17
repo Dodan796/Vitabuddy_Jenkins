@@ -120,16 +120,20 @@ input, textarea {
 }
 
 .phone-number {
-	display: inline;
-	/* display: flex; */
-	flex-direction: row;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .phone-number input {
-    width: 20%;
-    display: inline-block;
+    width: 22%;
+    text-align: center;
+    padding: 10px;
 }
 
+.phone-number span {
+    margin: 0 8px; /* 구분 기호 사이 여백 */
+}
 
 .zipcode button {
   	padding: 10px;
@@ -192,6 +196,7 @@ input, textarea {
     width: 7%;
     height: 3%;
     justify-content: center;
+    white-space: nowrap;
     
 } 
 

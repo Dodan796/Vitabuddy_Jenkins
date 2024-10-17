@@ -22,6 +22,15 @@ public class ReviewVO {
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date endDate;
 	private String reviewImg;
+	private String supName;
+
+	public String getSupName() {
+		return supName;
+	}
+
+	public void setSupName(String supName) {
+		this.supName = supName;
+	}
 
 	// 2. 클래스 초기화
 	public ReviewVO() {

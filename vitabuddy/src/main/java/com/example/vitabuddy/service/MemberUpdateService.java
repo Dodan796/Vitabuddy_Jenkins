@@ -29,6 +29,9 @@ public class MemberUpdateService implements IMemberUpdateService {
         if (vo.getUserPwd() != null && !vo.getUserPwd().isEmpty()) {
             String encodedPassword = pwdEncoder.encode(vo.getUserPwd());
             vo.setUserPwd(encodedPassword);
+        }else {  //else블록 추가_1017
+        	String existingEncodedPassword = dao.getEncodedPasswordById(vo.getUserId());  // DAO에서 비밀번호 조회
+            vo.setUserPwd(existingEncodedPassword);
         }
         dao.myInfoUpdate(vo);
     }

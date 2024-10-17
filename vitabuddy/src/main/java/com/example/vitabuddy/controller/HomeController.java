@@ -21,7 +21,7 @@ public class HomeController {
 	// 3. 상품상세페이지
 	@RequestMapping("/prdDetail")
 	public String prdDetail() {
-		return"product/productDetailView";
+		return"supplement/productDetailView";
 	}
 	
 }

@@ -17,52 +17,79 @@
 </head>
 <body>
 	<c:import url="/WEB-INF/views/layout/top.jsp"/>
-	<div id="wrap">
+	
+	<section id="wrap"> <!-- div 에서 section으로 변경 -->
 		<div class="container">
+			<div class="headers"><!-- 헤더 따로 div 제공 -->
 			<h1>회원 가입</h1>
+			</div>
 			<form onsubmit="return false;">
-				<div class="left">
+			 <div class="horizontal_box">
+			<!-- 구조변경. right left로 나뉜 div horizontal_box로 하나로 통합 -->
+				<div class="box_rowContents"> <!-- 각 항목 마다 div로 이름/입력창 구조로 되게끔 반영 -->
 					<label>이름</label>
 					<input type="text" name="userName" id="userName" required/>
-					<br>아이디
-					<button type="button" onclick="fnDbCheckId()" name="dbCheckId" class="btn">
-						중복확인
-					</button>
+				</div>
+				<p></p> <!-- 간격 만들기 -->
+				<div class="box_rowContents">
+					<label>아이디</label>
 					<input type="text" name="userId" id="userId" required/>
-				
+					<!-- 버튼에 스타일 적용, 목록 옆에 띄움 -->
+					<button type="button" onclick="fnDbCheckId()" name="dbCheckId" class="btn" style="position:absolute; right: 28%; width: 7%;">중복확인</button>
+				</div>
+				<p></p> <!-- 간격 만들기 -->
+				<div class="box_rowContents">
 					<label>비밀번호 설정</label>
 					<input type="password" name="userPwd" id="userPwd" oninput="pwCheck()" required/>
-					<br><span id="pwLeng"></span>
+				</div>	
+				<p id="pwLeng"></p> <!-- 줄 바꿈을 br에서 p로 통일함 -->
+				<div class="box_rowContents">
 					<label>비밀번호 확인</label>
 					<input type="password" name="confirmPwd" id="confirmPwd" oninput="pwCheck()" required/><br>
-					<span id="pwOk"></span>
-					<div class="phone-number">
-						<label>전화 번호 입력</label>
+				</div>
+				<p id="pwOk"></p>
+				<div class="phone-number">
+					<div class="box_rowContents">
+						<label>전화번호</label>
 						<input type="tel" name="userPh1" id="userPh1" placeholder="010" maxlength="3" required/>
-						-
+						<span>-</span>
 						<input type="tel" name="userPh2" id="userPh2" placeholder="1111" maxlength="4" required/>
-						-
+						<span>-</span>
 						<input type="tel" name="userPh3" id="userPh3" placeholder="1234" maxlength="4" required/>
 					</div>
+				</div>
+				<p></p>
+				<div class="box_rowContents">
 					<label>이메일</label>
 					<input type="email" name="userEmail" id="userEmail" onchange="emailCheck()" required/>
-					<br><span id="emOk"></span>
 				</div>
-			
-				<div class="right">
-					<div class="zipcode">
-						우편번호 입력<button type="button" name="searchBtn" class="btn" onclick="openZipSearch()">우편번호 찾기</button><br>
-						<input type="text" name="userZipcode" id="userZipcode" readonly/>		
-						<label>주소 입력</label>
+				<p id="emOk"></p>
+				<!-- </div>
+				<div class="right"> 통합 위해 삭제-->
+				<div class="zipcode">
+					<div class="box_rowContents">
+						<label>우편번호</label>
+						<input type="text" name="userZipcode" id="userZipcode" readonly/>
+						<!-- 버튼에 스타일 적용, 목록 옆에 띄움 -->
+						<button type="button" name="searchBtn" class="btn" onclick="openZipSearch()" style="position:absolute; right: 28%; width: 7%;">우편번호 찾기</button><br>				
+					</div>
+					<p></p>
+					<div class="box_rowContents">
+						<label>주소</label>
 						<input type="text" name="userAddress1" id="userAddress1" readonly/>
-						<label>상세 주소 입력</label>
+					</div>
+					<p></p>
+					<div class="box_rowContents">
+						<label>상세 주소</label>
 						<input type="text" name="userAddress2" id="userAddress2" required/>
 					</div>
 				</div>
-			</form>
-			<button class="submit-btn" type="button" id="submitBtn" onclick="registerMember()">회원가입</button>
+			</div>
+		</form>
+		<button class="submit-btn" type="button" id="submitBtn" onclick="registerMember()">회원가입</button>
 		</div>
-	</div>
+	</section>
+
 <c:import url="/WEB-INF/views/layout/footer.jsp"/>
   
 </body>

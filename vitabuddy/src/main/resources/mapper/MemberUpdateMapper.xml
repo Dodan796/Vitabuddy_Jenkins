@@ -22,5 +22,10 @@
             userAddress2=#{userAddress2, jdbcType=VARCHAR}
         where userId=#{userId, jdbcType=VARCHAR}
     </update>
+    
+        <!-- 1017 회원정보 수정 - 이미 존재하는 유저의 암호화 비번 가져오기  -->
+    <select id="getEncodedPasswordById" parameterType="String" resultType="String">
+    	select userPwd from users where userId=#{userId}
+    </select>
 
 </mapper>

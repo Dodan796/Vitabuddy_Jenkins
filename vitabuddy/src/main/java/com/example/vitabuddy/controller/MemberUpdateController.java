@@ -26,13 +26,14 @@ public class MemberUpdateController {
     }
 
     // 회원 정보 수정 처리
-    @RequestMapping("/myInfoUpdate")
+    @RequestMapping("/member/myInfoUpdate")
     public String myInfoUpdate(MemberVO vo, 
                                @RequestParam("userPh1") String userPh1,
                                @RequestParam("userPh2") String userPh2,
                                @RequestParam("userPh3") String userPh3,
                                HttpSession session) {
         String userId = (String) session.getAttribute("sid");
+        vo.setUserId(userId);  //vosetUserId 추가 1017
         String userPh = userPh1 + "-" + userPh2 + "-" + userPh3;
         vo.setUserPh(userPh); 
         memService.myInfoUpdate(vo);

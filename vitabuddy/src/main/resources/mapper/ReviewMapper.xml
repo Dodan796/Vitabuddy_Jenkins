@@ -4,77 +4,67 @@
 
 <mapper namespace="com.example.vitabuddy.dao.IReviewDAO">
 
-	<!-- ResultMap -->
-	<resultMap id="reviewResultMap"
-		type="com.example.vitabuddy.model.ReviewVO">
-		<result property="reviewNo" column="REVIEWNO" />
-		<result property="reviewTitle" column="REVIEWTITLE" />
-		<result property="userId" column="USERID" />
-		<result property="supId" column="SUPID" />
-		<result property="rating" column="RATING" />
-		<result property="reviewHashtag" column="REVIEWHASHTAG" />
-		<result property="reviewDate" column="REVIEWDATE" />
-		<result property="content" column="CONTENT" />
-		<result property="startDate" column="STARTDATE" />
-		<result property="endDate" column="ENDDATE" />
-		<result property="reviewImg" column="REVIEWIMG" />
-	</resultMap>
+    <resultMap id="reviewResultMap" type="com.example.vitabuddy.model.ReviewVO">
+        <result property="reviewNo" column="REVIEWNO" jdbcType="VARCHAR"/>
+        <result property="reviewTitle" column="REVIEWTITLE" jdbcType="VARCHAR"/>
+        <result property="userId" column="USERID" jdbcType="VARCHAR"/>
+        <result property="supId" column="SUPID" jdbcType="INTEGER"/>
+        <result property="rating" column="RATING" jdbcType="VARCHAR"/>
+        <result property="reviewHashtag" column="REVIEWHASHTAG" jdbcType="VARCHAR"/>
+        <result property="reviewDate" column="REVIEWDATE" jdbcType="DATE"/>
+        <result property="content" column="CONTENT" jdbcType="VARCHAR"/>
+        <result property="startDate" column="STARTDATE" jdbcType="DATE"/>
+        <result property="endDate" column="ENDDATE" jdbcType="DATE"/>
+        <result property="reviewImg" column="REVIEWIMG" jdbcType="VARCHAR"/>
+        <result property="supName" column="SUPNAME" jdbcType="VARCHAR"/>
+    </resultMap>
 
-	<!-- 1. 리뷰 작성 -->
-	<insert id="insertReview"
-		parameterType="com.example.vitabuddy.model.ReviewVO">
-		INSERT INTO REVIEW (REVIEWNO, REVIEWTITLE, USERID,
-		SUPID, RATING, REVIEWHASHTAG, REVIEWDATE, CONTENT, STARTDATE, ENDDATE,
-		REVIEWIMG)
-		VALUES (#{reviewNo}, #{reviewTitle}, #{userId}, #{supId},
-		#{rating}, #{reviewHashtag}, #{reviewDate}, #{content}, #{startDate},
-		#{endDate}, #{reviewImg})
-	</insert>
+    <insert id="insertReview" parameterType="com.example.vitabuddy.model.ReviewVO">
+        INSERT INTO REVIEW (REVIEWNO, REVIEWTITLE, USERID, SUPID, RATING, REVIEWHASHTAG, REVIEWDATE, CONTENT, STARTDATE, ENDDATE, REVIEWIMG)
+        VALUES (#{reviewNo, jdbcType=VARCHAR}, #{reviewTitle, jdbcType=VARCHAR}, #{userId, jdbcType=VARCHAR}, #{supId, jdbcType=INTEGER},
+                #{rating, jdbcType=VARCHAR}, #{reviewHashtag, jdbcType=VARCHAR}, #{reviewDate, jdbcType=DATE}, 
+                #{content, jdbcType=VARCHAR}, #{startDate, jdbcType=DATE}, #{endDate, jdbcType=DATE}, #{reviewImg, jdbcType=VARCHAR})
+    </insert>
 
+    <select id="reviewLists" parameterType="int" resultMap="reviewResultMap">
+        SELECT REVIEWNO, REVIEWTITLE, USERID, SUPID, RATING, REVIEWHASHTAG, REVIEWDATE,
+               CONTENT, STARTDATE, ENDDATE, REVIEWIMG
+        FROM REVIEW
+        WHERE SUPID = #{supId, jdbcType=INTEGER}
+    </select>
 
-	<!-- 모든 리뷰 조회 -->
-	<select id="reviewLists" parameterType="int"
-		resultType="com.example.vitabuddy.model.ReviewVO">
-		SELECT REVIEWNO AS reviewNo, REVIEWTITLE AS reviewTitle, USERID AS userId,
-		SUPID AS supId,
-		RATING AS rating, REVIEWHASHTAG AS reviewHashtag, REVIEWDATE AS reviewDate,
-		CONTENT AS content, STARTDATE AS startDate, ENDDATE AS endDate,
-		REVIEWIMG AS reviewImg
-		FROM Review
-		WHERE SUPID = #{supId}
+    <delete id="deleteReview" parameterType="map">
+        DELETE FROM REVIEW
+        WHERE REVIEWNO = #{reviewNo, jdbcType=VARCHAR} AND USERID = #{userId, jdbcType=VARCHAR}
+    </delete>
+
+    <update id="updateReview" parameterType="com.example.vitabuddy.model.ReviewVO">
+        UPDATE REVIEW
+        SET 
+            REVIEWTITLE = #{reviewTitle, jdbcType=VARCHAR},
+            RATING = #{rating, jdbcType=VARCHAR},
+            REVIEWHASHTAG = #{reviewHashtag, jdbcType=VARCHAR},
+            STARTDATE = #{startDate, jdbcType=DATE},
+            ENDDATE = #{endDate, jdbcType=DATE},
+            CONTENT = #{content, jdbcType=VARCHAR},
+            REVIEWIMG = #{reviewImg, jdbcType=VARCHAR}
+        WHERE REVIEWNO = #{reviewNo, jdbcType=VARCHAR} AND USERID = #{userId, jdbcType=VARCHAR}
+    </update>
+
+    <select id="getReviewByNo" parameterType="string" resultMap="reviewResultMap">
+        SELECT REVIEWNO, REVIEWTITLE, USERID, SUPID, RATING, REVIEWHASHTAG, REVIEWDATE,
+               CONTENT, STARTDATE, ENDDATE, REVIEWIMG
+        FROM REVIEW
+        WHERE REVIEWNO = #{reviewNo, jdbcType=VARCHAR}
+    </select>
+
+	<select id="getReviewsByUserId" parameterType="string" resultMap="reviewResultMap">
+	    SELECT r.ReviewNo, r.ReviewTitle, s.SupName AS supName, r.ReviewDate 
+	    FROM Review r 
+	    JOIN Supplement s ON r.SupID = s.SupID 
+	    WHERE r.UserId = #{userId} 
+	    ORDER BY r.ReviewDate DESC
 	</select>
-
-	<!-- 리뷰 삭제 -->
-	<delete id ="deleteReview" parameterType = "map">
-		DELETE FROM REVIEW
-		WHERE REVIEWNO = #{reviewNo} AND USERID = #{userId}	
-	</delete>
-
-	<!-- 리뷰 수정 -->
-		    <update id="updateReview" parameterType="com.example.vitabuddy.model.ReviewVO">
-			    UPDATE REVIEW
-			    SET 
-			        REVIEWTITLE = #{reviewTitle},
-			        RATING = #{rating},
-			        REVIEWHASHTAG = #{reviewHashtag},
-			        STARTDATE = #{startDate},
-			        ENDDATE = #{endDate},
-			        CONTENT = #{content},
-			        REVIEWIMG = #{reviewImg}
-			    WHERE REVIEWNO = #{reviewNo} AND USERID = #{userId}
-			</update>
-	
-	
-		<!-- 리뷰 번호를 통한 리뷰 조회  -->
-		<select id="getReviewByNo" parameterType="string" resultType="com.example.vitabuddy.model.ReviewVO">
-		    SELECT REVIEWNO AS reviewNo, REVIEWTITLE AS reviewTitle, USERID AS userId,
-		           SUPID AS supId, RATING AS rating, REVIEWHASHTAG AS reviewHashtag,
-		           REVIEWDATE AS reviewDate, CONTENT AS content, STARTDATE AS startDate,
-		           ENDDATE AS endDate, REVIEWIMG AS reviewImg
-		    FROM REVIEW
-		    WHERE REVIEWNO = #{reviewNo}
-		</select>
-
 
 
 </mapper>
