@@ -23,7 +23,7 @@
 
 			<!-- 상품 프로필 -->
 			<section class="prdProfile">
-				<br><br>
+				<!-- 공백 삭제 <br><br> -->
 				<table>
 					<tr>
 						<td colspan="4">
@@ -118,7 +118,7 @@
 						<h3>영양정보</h3>
 						<table>
 							<tr>
-								<td>${supplementDetail.supNutri}</td>
+								<td class="supNutri">${supplementDetail.supNutri}</td>
 								<td>${supplementDetail.supNutriInfo}</td>
 							</tr>
 						</table>
@@ -128,7 +128,8 @@
 			</section>
 			
 				<!-- 리뷰작성 -->
-		<div class="reviewWrite">
+				<!-- div를 section으로 변경 1018 -->
+		<section class="reviewWrite">
 			<form method="post" id="reviewForm" enctype="multipart/form-data"
 				action="/supplement/supplementDetail/${supplementDetail.supId}/review"> <!-- sup.supId -> supplement.supId -->
 				<input type="hidden" name="reviewNo" value="${review.reviewNo}">
@@ -179,14 +180,24 @@
 
 					<!-- 해시태그 -->
 					<tr>
-						<td><select id="hashtag" name="reviewHashtag">
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
+						<td>
+							<select id="hashtag" name="reviewHashtag">
+								<option value="">없음</option>
+								<option value="#가성비최고">#가성비최고</option>
+								<option value="#효과빠름">#효과빠름</option>
+								<option value="#복용간편">#복용간편</option>
+								<option value="#지속적인 효과">#지속적인 효과</option>
+								<option value="#어린이도 잘먹어요">#어린이도 잘먹어요</option>
+								<option value="#피로회복에 좋아요">#피로회복에 좋아요</option>
+								<option value="#소화가 편해요">#소화가 편해요</option>
+								<option value="#근육회복에 좋아요">#근육회복에 좋아요</option>
+								<option value="#탈모예방에 좋아요">#탈모예방에 좋아요</option>
+								<option value="#눈이 편안해요">눈이 편안해요</option>
 								<c:forEach var="tag" items="${taglist}">
 									<option value="${tag.tagNo}">${tag.tagName}</option>
 								</c:forEach>
-						</select></td>
+							</select>
+						</td>
 
 						<!-- 복용기간 설정 -->
 						<td><input type="date" id="date1" name="startDate"
@@ -210,10 +221,11 @@
 				<!-- submit -->
 				<input type="submit" value="작성하기" class="btn btnFilled">
 			</form>
-		</div>
+		</section><!-- div를 section으로 변경 1018 -->
 
 		<!-- 리뷰목록 -->
-		<div class="reviews">
+		<!-- div를 section으로 변경 1018 -->
+		<section class="reviews">
 			<c:forEach var="review" items="${reviewList}">
 				<table class="reviewItem">
 					<tr>
@@ -224,17 +236,6 @@
 							<a href="#" class="correctReview" data-review-id="${review.userId}">수정</a>
 							</c:if>
 						</td> --%>
-						<td>
-						    <c:if test="${review.userId == sessionScope.sid}">
-						        <button 
-						            class="editButton" 
-						            data-sup-id="${supplementDetail.supId}" 
-						            data-review-no="${review.reviewNo}">
-						            수정
-						        </button>
-						    </c:if>
-						</td>
-						
 						<!-- 리뷰 삭제 -->
 						<%-- <td>
 					    		<c:if test="${review.userId == sessionScope.sid}">
@@ -242,15 +243,25 @@
 					    		</c:if>
 							</td> --%>
 						<!-- 리뷰삭제 수정된 부분 -->
-						<td>
+
+						<!-- 삭제 버튼 style="display:inline;" 제거 class="deleteReview" 추가 -->
+						<td colspan="2"><!-- 수정 삭제 버튼 한 칸에/ 순서 변경-->
+							<c:if test="${review.userId == sessionScope.sid}">
+								<button class="deleteReview" 
+								   data-review-id="${review.reviewNo}" 
+								   data-sup-id="${supplementDetail.supId}">
+								   삭제
+								</button>
+							</c:if>
 						    <c:if test="${review.userId == sessionScope.sid}">
-						        <button class="deleteReview" 
-						                data-review-id="${review.reviewNo}" 
-						                data-sup-id="${supplementDetail.supId}">
-						            삭제
+						        <button 
+						            class="editButton" 
+						            data-sup-id="${supplementDetail.supId}" 
+						            data-review-no="${review.reviewNo}">
+						            수정
 						        </button>
-						    </c:if>
-						</td>
+						    </c:if>						
+                		</td>
 					</tr>
 
 					<!-- 작성자 정보 -->
@@ -260,11 +271,14 @@
 							<p>작성일: <fmt:formatDate value="${review.reviewDate}" pattern="yyyy-MM-dd" /></p>
 						</td>
 						<!-- 이미지 파일 출력 -->
+				<!-- 이미지 칸 합침, 반복문 밖으로 td이동/이미지 태그의 width="80" height="80" 값 삭제-->		
+						<td class="reviewImg" colspan="3">
 			            <c:forEach var="img" items="${fn:split(review.reviewImg, ';')}">
-			                <td class="reviewImg">
-			                    <img class="reviewImg" src="/Review_Upload/${img}" width="80" height="80">
-			                </td>
+			                <!-- <td class="reviewImg"> -->
+			                    <img class="reviewImg" src="/Review_Upload/${img}">
+			                <!-- </td> -->
 			            </c:forEach>
+			            </td>
 					</tr>
 					<!-- 리뷰 내용 -->
 					<tr>
@@ -274,9 +288,11 @@
 					</tr>
 					<!-- 기간 및 해시태그 -->
 					<tr class="supInfo">
-						<td colspan="3"></td>
-						<td>복용기간:</td>
-						<td><fmt:formatDate value="${review.startDate}" pattern="yyyy-MM-dd" /> ~ <fmt:formatDate value="${review.endDate}" pattern="yyyy-MM-dd" /></td>
+					<!-- 테이블 구조 수정 colspan 3 >2 -->
+						<td colspan="2"></td>
+						<!-- 복용기간 칸 합침 -->
+						<td colspan="3">복용기간: 
+						<fmt:formatDate value="${review.startDate}" pattern="yyyy-MM-dd" /> ~ <fmt:formatDate value="${review.endDate}" pattern="yyyy-MM-dd" /></td>
 						<td>해시태그: ${review.reviewHashtag}</td>
 						<td>
 							<div class="rate">
@@ -294,6 +310,7 @@
 					</tr>
 				</table>
 			</c:forEach>
+			</section><!-- div를 section으로 변경 1018 -->
 
 			<nav>
 				<!-- 페이지네이션 -->
@@ -312,7 +329,7 @@
 				</div>
 			</nav>
 
-		</div>
+<!-- 		</div> -->
 			
 			
 			<!-- footer 포함 -->

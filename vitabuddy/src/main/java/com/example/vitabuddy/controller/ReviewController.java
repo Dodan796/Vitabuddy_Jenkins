@@ -102,7 +102,7 @@ public class ReviewController {
             return "error/fileUploadError";
         }
 
-        return "redirect:/supplement/supplementDetail/" + supId;
+        return "redirect:/api/supplement/supplementDetail/" + supId;
     }
 
     // 3. 리뷰 삭제
@@ -118,7 +118,7 @@ public class ReviewController {
             return "error/deleteError";
         }
         
-        return "redirect:/supplement/supplementDetail/" + supId;
+        return "redirect:/api/supplement/supplementDetail/" + supId;
     }
 
 	// 4. 리뷰 수정
@@ -184,7 +184,7 @@ public class ReviewController {
 	        return "error/fileUploadError";
 	    }
 
-	    return "redirect:/supplement/supplementDetail/" + supId;
+	    return "redirect:/api/supplement/supplementDetail/" + supId;
 	}
 
 	// 5. 리뷰 수정 폼 조회

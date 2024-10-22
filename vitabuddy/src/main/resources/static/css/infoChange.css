@@ -1,4 +1,9 @@
 @charset "UTF-8";
+*{
+	/* 옆에 여백 없앰 */
+    box-sizing: border-box;	
+}
+
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f7f4ef;
@@ -53,7 +58,8 @@ table{
     border-radius: 10px;
     background-color: #e5e0da;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    color: #7b6e48;
+    /* 색상수정 */
+    color: #7e7b46;
 }
 
 .horizontal_box .name{
@@ -62,7 +68,10 @@ table{
 .temp {
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
+	/* 가로 배열 */
+	justify-content: space-between;
+	flex-wrap: nowrap;
+	/* 가로 배열 */
 	column-gap: 40px;
 	margin-left: 20px;
 	margin-right: 20px;
@@ -75,12 +84,14 @@ table{
 .horizontal_box label {
     display: block;
     padding: 0 10px 0 10px;
-    color: #7b6e48;
+    /* 색상 변경 */
+    color: #7e7b46;
 }
 .horizontal_box input {
     width: 97%;
     padding: 10px;
-    color: #7b6e48;
+    /* 색상 수정 */
+    color: #7e7b46;
     background-color: #e9e5e0;
     border-style:none;
     border-radius: 5px;
@@ -91,22 +102,35 @@ table{
 	flex-direction: row;
 }
 label{
-	color: #7b6e48;
+	/* 색상 수정 */
+	color: #7e7b46;
 }
 .left, .right {
-	width:50%;
-	display:inline-block;
+	/* 너비 수정 */
+	width:48%;
+    display:inline-block; 
+    /* 추가 */
+	min-width: 300px;
+}
+
+/* 버튼을 가운데 정렬 */
+.button-container {
+    display: flex;
+    justify-content: center; /* 가로로 가운데 정렬 */
+    width: 100%;
 }
 
 h1 {
     text-align: center;
-    color: #7b6e48;
+    /* 색상 수정 */
+    color: #7e7b46;
 }
 
 h4 {
     display: block;
     margin-top: 10px;
-    color: #7b6e48;
+    /* 색상 수정 */
+    color: #7e7b46;
 }
 
 input, textarea {
@@ -116,6 +140,11 @@ input, textarea {
     background-color: #e9e5e0;
     border-style:none;
     border-radius: 5px;
+}
+
+/* 우편번호 너비 수정 */
+.box_rowContents input{
+	width: 30%;
 }
 
 .phone-number {
@@ -139,13 +168,17 @@ input, textarea {
 
 .zipcode button {
   	padding: 10px;
-  	width: 200px;
-    background-color: #a9a27e;
+/*   너비 수정	width: 200px; */
+	width: 20%;
+	min-width: 150px;
+	max-width: 200px;
+/* 색상수정 */
+    background-color: #7e7b46;
     color: white;
     border: none;
     border-radius: 20px;
     cursor: pointer;
-    margin-left: auto;
+/*  제거 margin-left: auto; */
 }
 
 .submit-btn {
@@ -154,7 +187,8 @@ input, textarea {
     width: 200px;
     margin: 20px auto;
     padding: 10px;
-    background-color: #a9a27e;
+    /* 색상 수정 */
+    background-color: #7e7b46;
     color: white;
     border: none;
     border-radius: 20px;
@@ -168,34 +202,46 @@ input, textarea {
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #e9e5e0;
+    /* padding 추가 */
+    padding: 5px;
 }
+
 .search-box i {
-    color: #888;
+	color: #888;
     margin-left: 10px;
 }
 
 .search-box input {
     border: none;
     outline: none;
-    width: 100%;
-    background-color: transparent;
+    /* 너비, 배경색 수정, padding 추가*/
+    width: 70%;
+    background-color: #e9e5e0;
+    padding: 5px;
+    
     font-size: 16px;
 }
 
 .search-box input::placeholder {
     color: #aaa;
 }
+/* 전체 수정 */
 select{
-	
+	background : transparent;
+	border: none;
+	color: #7e7b46;
+	font-size : 1.0em;
 	float:right;
-	width:100%;
+	width:45%;
 }
-.fa-solid fa-magnifying-glass{
+/* 제거 */
+/* .fa-solid fa-magnifying-glass{
 	float:left;
-}
+} */
 select {
     float: right;
-    width: 10%;
+    /* 중복 제거 */
+/*     width: 10%; */
 }
 
 .moveTopBtn {
@@ -203,7 +249,8 @@ select {
 	text-align: center;
 	width: 20%;
    padding: 10px; 
-    background-color: #a9a27e;
+   /* 색상 수정 */
+    background-color: #7e7b46;
     color: white;
     border: none;
     border-radius: 20px;
@@ -224,3 +271,60 @@ html {
 		scroll-behavior: auto;
 	}
 }
+
+/* 추가 */
+
+button {
+    background-color: transparent; 
+    color: #7e7b46; 
+    border: 1px solid #7e7b46; 
+    border-radius: 5px; 
+    padding: 3px;
+    cursor: pointer; 
+    font-size: 14px; 
+    margin-left: 10px; 
+}
+
+.search-box button{
+	margin-top: 0;
+	margin-left: 5px;
+	margin-right: 5px;
+	border: none;
+	background: transparent;
+}
+
+#currentSupplementList{
+	height: 350px; /* div의 높이- %로 설정시 추가 할때 마다 길이 늘어남*/
+    overflow-y: auto; /* 스크롤 설정 */
+} 
+
+#supplementList{
+	margin-top: 10px;
+    height: 350px; /* div의 높이 */
+    overflow-y: auto; /* 스크롤 설정 */
+    margin-bottom: 10px;
+    padding-left: 16px;
+}
+
+.supList{
+	margin-top: 20px;
+}
+
+li {
+    padding-left: 10px; /* 기호와 텍스트 사이의 거리 */
+}
+
+#supplementList button:hover,
+#currentSupplementList button:hover {
+    background-color: #7e7b46; 
+    color: #fff; 
+    border: 1px solid #7e7b46; 
+    border-radius: 5px; 
+    font-size: 14px; 
+    margin-left: 10px; 
+}
+
+li::marker {
+    font-size: 1em;
+}
+

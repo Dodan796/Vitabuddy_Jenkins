@@ -64,15 +64,13 @@
 									<input type="text" id="userAddress2" name="userAddress2"  value="${myInfo.userAddress2}" required/>
 								</div>
 							</div>
-						<button class="submit-btn" id="submitBtn" type="submit" >정보변경</button>  <!--정보변경 버튼, 즉 submit을 눌렀을 때, 위 form 태그 시작쪽의 onsubmit이 적용되고 requestmapping url로 이동할 수 있도록 type="submit" 추가-->
-
-						</form>
+							
 					</div>
-                
-                    <!-- 여기서부터 영양제 정보 수정 변경 - 팀장님 파트 -->
-                    <div class="right">
+							
+							<!-- 여기서부터 영양제 정보 수정 변경 - 팀장님 파트 -->
+<!--  temp div, 폼 태그 내부 button 앞으로 이동  --><div class="right">
                         <div class="search-box">
-                            <i class="fas fa-search"></i>
+<!--       위치 이동(85)                    <i class="fas fa-search"></i> -->
                             <input type="text" id="keyword" placeholder="Search">
                             <select id="brand">
                                 <option value="">브랜드 선택</option>
@@ -83,20 +81,35 @@
                                 <option value="Swanson">Swanson</option>
                                 <option value="Thorne">Thorne</option>
                             </select>
-                            <button type="button" onclick="searchSupplements()">검색</button>
+                            <!-- 검색 버튼에 아이콘 이동 <button type="button" onclick="searchSupplements()">검색</button> -->
+                            <button type="button" onclick="searchSupplements()"><i class="fas fa-search"></i></button>
                         </div>
                         <!-- 검색 결과가 표시될 영역 -->
                         <div id="supplementList"></div>
                         
                         <!-- 복용 중인 영양제 -->
+                        <!-- 새로운 div supList 생성 -->
+                        <div class="supList">
                         <label>복용 중인 영양제</label>
-                        <ul id="currentSupplementList">
-                            <c:forEach var="supplement" items="${userSupplements}">
-                                <li>${supplement.supName} - ${supplement.supBrand}</li>
-                            </c:forEach>
-                        </ul>
+	                        <ul id="currentSupplementList">
+	                            <c:forEach var="supplement" items="${userSupplements}">
+	                                <li>${supplement.supName} - ${supplement.supBrand}</li>
+	                            </c:forEach>
+	                        </ul>
+                        </div>
                     </div>
-                </div>
+                    </div>
+                    <!-- br 태그 추가 -->
+                    <br>
+                    <!-- 버튼 컨테이너 생성 -->
+                    <div class="button-container">
+						<button class="submit-btn" id="submitBtn" type="submit" >정보변경</button>  <!--정보변경 버튼, 즉 submit을 눌렀을 때, 위 form 태그 시작쪽의 onsubmit이 적용되고 requestmapping url로 이동할 수 있도록 type="submit" 추가-->
+					</div>
+						</form>
+					
+                
+                    
+                
             </div>
         </section>
         <c:import url="/WEB-INF/views/layout/footer.jsp"/>

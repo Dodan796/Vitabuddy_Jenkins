@@ -3,12 +3,15 @@
 *{
 	margin:0 auto;
 	font-family:myriad;
+		/* 옆에 여백 없앰 */
+    box-sizing: border-box;	
 
 } 
 
 #wrap{
 	width:100%;
-	background-color:#e5e0da; 
+	/* background-color:#e5e0da;  *//* 배경색상 변경 */
+	background-color:#f7f4ef; 
 	text-align:center;
 	position:relative; 
 }
@@ -34,28 +37,38 @@ h2{
 }
 
 /* 상품 섹션 */
-.product-section {
+/* .product-section > prdProfile*/
+.prdProfile {
     padding: 20px;
     margin: 0 auto;
-    width:1000px;
+    width:80%; /* width:1000px; 다른 페이지와 너비 맞춤 */
     padding-right: 0;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
+    margin-top: 30px;
+    /* 요소 너비 통일하기 위해 추가 */
+    box-sizing: border-box;
+    /* 글자색 통일 */
+    color: #583b1f;
 }
 
 /* 상품 프로필 */
 .prdProfile h3 {
     font-size: 28px;
     color: #583b1f;
-    margin-top:30px;
-    margin-bottom: 15px;
+    /* 요소 여백 통일 위해 삭제 */
+    /* margin-top:30px;
+    margin-bottom: 15px; */
 }
 table{
 	align-items:left;
-	width:1000px;
+	/* 퍼센트로 단위 변경 width:1000px; */
+	width:90%;
 }
 .prdImg{
 	float: right;
 	margin-left: 30px;/* 사진 옆에 공간 띄우기 */
+	/* 이미지 테두리 추가 */
+	border: 1.5px solid #7e7b46;
 }
 
 .rating {
@@ -70,9 +83,10 @@ table{
 }
 
 /* 버튼 스타일 */
-a {
+/* 중복되는 설정 제거 */
+/* a {
     text-decoration: none;
-}
+} */
 
 #addWish, #addCart {
     display: inline-block;
@@ -90,10 +104,16 @@ a {
 
 /* 상품 정보 */
 .prdInfo {
-	margin-top:40px;
-	width:1000px;
+	/* 여백 통일 위해 삭제 margin-top:40px; */
+	/* %로 단위 수정 너비 통일 width:1000px; */
+	width:80%;
     text-align: left; /* 왼쪽 정렬 */
-    padding: 30px;
+    /* 수정 padding: 30px; */
+    padding: 20px;
+    /* 요소 영역 너비 통일 위해 추가 */
+    box-sizing: border-box;
+    padding-bottom: 30px;
+    padding-top: 30px;
 }
 
 .prdInfo h2{
@@ -116,11 +136,14 @@ a {
 
 /* 리뷰 작성 폼 */
 .reviewWrite {
-    background-color: #f7f5f2;
-    padding: 30px;
+    /* 간격 수정 padding: 30px; */
+    padding: 20px;
     border-radius: 10px;
     margin: 20px auto;
-    max-width: 1000px;
+    /* %로 너비 통일 max-width: 1000px; */
+    width: 80%;
+    /* 너비 통일 위해 추가 */
+    box-sizing: border-box;
 }
 
 .reviewWrite label {
@@ -130,6 +153,8 @@ a {
     margin-bottom: 5px;
     display: inline-block;
     margin-right:10px;
+    /* 여백 통일 */
+    margin-left: 10px;
 }
 
 .reviewWrite input[type="text"],
@@ -139,6 +164,8 @@ a {
     border: 1px solid #ddd;
     border-radius: 5px;
     margin-bottom: 15px;
+    /* 배경색 전체 배경과 통일 */
+    background: #f7f4ef;
 }
 
 .reviewWrite select {
@@ -147,6 +174,8 @@ a {
     border: 1px solid #ddd;
     border-radius: 5px;
     margin-bottom: 15px;
+    /* 배경색 전체 배경과 통일 */
+    background: #f7f4ef;
 }
 
 .option {
@@ -160,6 +189,8 @@ a {
     font-size: 13px;
     margin: 10px;
     padding: 5px;
+    /* 배경색 전체 배경과 통일 */
+    background: #f7f4ef;
 }
 
 .option label {
@@ -168,9 +199,11 @@ a {
 }
 
 .option input[type="date"] {
-    height: 20px;
+/*   삭제  height: 20px; */
     border: 1px solid #ddd;
     border-radius: 5px;
+    /* 배경색 전체 배경과 통일 */
+    background: #f7f4ef;
 }
 
 
@@ -180,6 +213,8 @@ a {
 .rating {
     gap: 5px;
     margin: 10px 0;
+    /* 여백 통일 */
+    margin-left: 10px;
 }
 
 .rating input[type="radio"] {
@@ -198,20 +233,36 @@ a {
 /* 리뷰 목록 */
 .reviews {
     margin: 0 auto;
-    max-width: 1050px;
+    /* 너비 통일 위해 수정 및 추가 max-width: 1050px; */
+    width: 80%;
+    box-sizing: border-box;
+}
+
+/* 테이블 영역 설정 위해 추가 */
+.reviews table{
+    width: 100%;
+    table-layout: fixed;
 }
 
 .reviewItem {
+    /* 너비 통일 위해 수정 max-width: 1050px;  */
     width: 100%;
-    max-width: 1050px; 
     margin: 20px auto;
     padding: 20px;
-    border-bottom: 0.7px solid #583b1f;
+    /* border-bottom: 0.7px solid #583b1f; */
 }
+
+/* 두 번째 항목부터 상단에 border 적용 */
+.reviewItem:nth-child(n+2) {
+    border-top: 0.7px solid #583b1f; 
+}
+
 
 .reviewItem td, .reviewItem th {
     padding: 5px;
-    vertical-align: middle; /* 수직 중앙 정렬 */
+    /* vertical-align: middle; 수직 중앙 정렬 */
+    /* 위쪽 정렬로 수정 */
+    vertical-align: top; 
 }
 
 .reviewItem h3 {
@@ -237,13 +288,13 @@ a {
     float: left;
 }
 
-.reviewItem a {
+/* .reviewItem a {
     float: right;
 }
 
 .reviewItem .reviewImg {
     display: block;
-    max-width: 200px; /* 이미지 크기 제한 */
+    max-width: 200px; 이미지 크기 제한
     float: right;
 }
 
@@ -251,7 +302,30 @@ a {
     float: right;
     width: 150px;
     height: 150px;
+} */
+
+/* 리뷰 영역 배열에 맞추기 위한 수정 및 추가 297~318*/
+.reviewItem img {
+    float: right;
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    margin:5px;
 }
+
+.reviewItem .supInfo{
+	text-align: left;
+}
+
+
+.reviewItem .rate{
+	float: right;
+}
+
+.reviewItem .btn {
+    width: 100%;
+}
+/* 리뷰 영역 배열에 맞추기 위한 수정 및 추가 297~318*/
 
 
 /* 버튼 스타일 */
@@ -275,7 +349,8 @@ a {
     margin: 0 5px;
     border-radius: 5px;
     color: #583b1f;
-    background-color: #e5e0da;
+    /* 배경색에 맞게 수정 background-color: #e5e0da; */
+    background-color: transparent;
     transition: background-color 0.3s;
 }
 
@@ -294,7 +369,8 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 15px;
+  /* font-size: 15px; */
+  font-size: 0.9em;
   font-weight: 300;
   text-decoration: none;
   text-align: center;
@@ -314,7 +390,8 @@ a {
 }
 
 .btnUnfilled{
-	width:150px;
+	/* width:150px; */
+	width:100%;
 	background-color:#e5e0da;
 	color:#583b1f;
 	border: solid 1.5px #583b1f; 
@@ -348,10 +425,49 @@ a {
 .prdInfo table {
     white-space: pre-line;
     color: #7e7b46; /* 폰트 컬러 변경 */
+    /* 영양 성분 표에 테두리 추가 */
+    border: 1px solid #7e7b46;
+    width: 100%;
+    border-collapse: collapse;
+    /* 영양 성분 표에 테두리 추가 */
+}
+
+/* 영양 성분 표에 테두리 추가 */
+.prdInfo table td,
+.prdInfo table th {
+    border: 1px solid #7e7b46;
+}
+
+/* 추가. td 너비 설정 */
+.prdInfo table td{
+/* 	width: 50%; */
+	padding: 5px;
+}
+/* 추가 td 너비 변경 */
+.prdInfo .subNutri{
+	width: 80%;
 }
 
 
 /* 섹션 너비 맞춤  */
 section{
 	width: 80%;
+	/* 추가. section 별로 너비 밑 설정 통일 */
+	background: #e5e0da; 
+	border-radius: 10px;
+	margin-bottom: 30px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
+
+/* 수정 삭제 버튼 나란히 배치*/ 
+.editButton,
+.deleteReview {
+    display: inline-block;
+    margin-right: 10px; 
+    text-decoration: none; 
+    color: #583b1f; 
+    float: right;
+    border: none;
+    background: transparent;
+    font-size: 0.9em;
+} 

@@ -66,14 +66,24 @@
 
 					<!-- 해시태그 -->
 					<tr>
-						<td><select id="hashtag" name="reviewHashtag">
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
+						<td>
+							<select id="hashtag" name="reviewHashtag">
+								<option value="">없음</option>
+								<option value="#가성비최고">#가성비최고</option>
+								<option value="#효과빠름">#효과빠름</option>
+								<option value="#복용간편">#복용간편</option>
+								<option value="#지속적인 효과">#지속적인 효과</option>
+								<option value="#어린이도 잘먹어요">#어린이도 잘먹어요</option>
+								<option value="#피로회복에 좋아요">#피로회복에 좋아요</option>
+								<option value="#소화가 편해요">#소화가 편해요</option>
+								<option value="#근육회복에 좋아요">#근육회복에 좋아요</option>
+								<option value="#탈모예방에 좋아요">#탈모예방에 좋아요</option>
+								<option value="#눈이 편안해요">눈이 편안해요</option>
 								<c:forEach var="tag" items="${taglist}">
 									<option value="${tag.tagNo}">${tag.tagName}</option>
 								</c:forEach>
-						</select></td>
+							</select>
+						</td>
 
 						<!-- 복용기간 설정 -->
 						<td><input type="date" id="date1" name="startDate"

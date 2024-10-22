@@ -1,159 +1,186 @@
 @charset "UTF-8";
+
+* {
+    /* 옆에 여백 없앰 */
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f7f4ef;
     margin: 0;
     padding: 0;
-   /*  color: #7b6e48; */
-}
-#wrap{
-	position: relative;
-	width: 100%;
-	height: 100%;
-}
-footer {
-	width:100%;
-	bottom: 0px;
-	position:absolute;  
-}
-/* section{
-	padding-bottom: 110px;
-} */
-p {
-	margin-left:10px;
-}
-table{
-	width:100%;
-	margin-bottom:20px;
-}
-.important{
-	width:70%
-}
-.board{
-	margin-bottom:20px;
 }
 
+#wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+footer {
+    width: 100%;
+    bottom: 0px;
+    position: absolute;
+}
+
+p {
+    margin-left: 10px;
+    font-size: x-large;
+}
+
+table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: large;
+}
+
+th, td {
+    border: 1px solid #7e7b46;
+}
+
+.important {
+    width: 25%;
+}
 
 .container {
-	padding: 20px;
+    padding: 20px;
     width: 80%;
- 	margin: 50px auto;
-    /* background-color: white;  */
-    height:auto;
-    overflow:hidden;
+    margin: 50px auto;
+    height: auto;
+    overflow: hidden;
     border-radius: 10px;
     background-color: #e5e0da;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    color: #7b6e48;
+    color: #7e7b46;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-.horizontal_box .name{
-	width:20%;
+.box {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    height: 100%;
 }
-.temp {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	column-gap: 40px;
-	margin-left: 20px;
-	margin-right: 20px;
+
+.mySupplement {
+    counter-reset: supplement-counter; /* 번호 초기화 */
 }
-.horizontal_box {
-	display: flex;
-	flex-direction: column;
-	row-gap: 10px;
+
+.mySupplement .supplement-item {
+    counter-increment: supplement-counter; /* 번호 증가 */
+    display: flex;
+    align-items: center; /* 번호와 텍스트를 수직으로 정렬 */
+    margin-bottom: 10px;
 }
-.horizontal_box label {
-    display: block;
-    padding: 0 10px 0 10px;
-    color: #7b6e48;
+
+.mySupplement .supplement-item::before {
+    content: counter(supplement-counter) ". "; /* 번호 붙이기 */
+    flex-shrink: 0; /* 번호가 줄바꿈 시 왼쪽으로 이동하지 않도록 고정 */
+    width: 30px; /* 번호에 일정한 너비를 지정 */
+    text-align: right;
+    margin-right: 10px;
+    font-weight: bold;
+    line-height: 1.5; /* 텍스트와 같은 높이로 설정 */
 }
-.horizontal_box input {
-    width: 97%;
-    padding: 10px;
-    color: #7b6e48;
-    background-color: #e9e5e0;
-    border-style:none;
-    border-radius: 5px;
+
+.mySupplement .supplement-item span {
+    display: inline-block;
+    word-wrap: break-word; /* 텍스트가 너무 길면 자동 줄바꿈 */
+    line-height: 1.5; /* 번호와 같은 높이로 설정 */
 }
 
 .box_rowContents {
-	 display: flex; 
-	justify-content: space-around;
-	
-	flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
-label{
-	color: #7b6e48;
+
+.horizontal_box {
+    width: 48%;
+    height: 100%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
+
+.mySupplement {
+    width: 100%;
+    height: 150px;
+    background: #e9e5e0;
+    overflow: auto;
+}
+
+.recommend, .interaction {
+    width: 100%;
+    height: 300px;
+    background: #e9e5e0;
+    overflow: auto;
+}
+
+label {
+    color: #7e7b46;
+}
+
 .left, .right {
-	width:50%;
-	display:inline-block;
+    width: 50%;
+    display: inline-block;
 }
 
 h1 {
     text-align: center;
-    color: #7b6e48;
+    color: #7e7b46;
+    font-size: xxx-large;
 }
 
 h4 {
     display: block;
     margin-top: 10px;
-    color: #7b6e48;
-}
-
-input, textarea {
-	display: inline-black;
-	width: 100%;
-    padding: 10px 0 10px 0;
-    background-color: #e9e5e0;
-    border-style:none;
-    border-radius: 5px;
+    color: #7e7b46;
 }
 
 .phone-number {
-	display: inline;
-	/* display: flex; */
-	flex-direction: row;
+    display: inline;
 }
-.tellecom{
-	margin-right: 20px;
-	width: 10%;
-    padding: 10px 0 10px 0;
-    background-color: #e9e5e0;
-    border-style:none;
-    border-radius: 5px;
-}
+
 .phone-number input {
     width: 20%;
     display: inline-block;
 }
 
-
 .zipcode button {
-  	padding: 10px;
-  	width: 200px;
+    padding: 10px;
+    width: 200px;
     background-color: #a9a27e;
     color: white;
     border: none;
     border-radius: 20px;
     cursor: pointer;
-    margin-left: auto;
 }
 
 .submit-btn {
     display: block;
-    
-    width: 200px;
+    width: 30%;
+    max-width: 250px;
     margin: 20px auto;
     padding: 10px;
-    background-color: #a9a27e;
+    background-color: #7e7b46;
     color: white;
     border: none;
-    border-radius: 20px;
+    border-radius: 30px;
     cursor: pointer;
-    
+    font-size: large;
 }
+
 .search-box {
     display: flex;
     align-items: center;
@@ -162,6 +189,7 @@ input, textarea {
     border-radius: 5px;
     background-color: #e9e5e0;
 }
+
 .search-box i {
     color: #888;
     margin-left: 10px;
@@ -175,45 +203,90 @@ input, textarea {
     font-size: 16px;
 }
 
-.search-box input::placeholder {
-    color: #aaa;
-}
-select{
-	
-	float:right;
-	width:100%;
-}
-.fa-solid fa-magnifying-glass{
-	float:left;
-}
 select {
     float: right;
     width: 10%;
 }
 
+.review-section {
+    width: 90%;
+}
+
+.purchase-section {
+    width: 90%;
+}
+
+.myReviewNo {
+    width: 10%;
+}
+
+.reviewDate {
+    width: 15%;
+}
+
 .moveTopBtn {
-	align:center;
-	text-align: center;
-	width: 20%;
-   padding: 10px; 
+    text-align: center;
+    width: 20%;
+    padding: 10px;
     background-color: #a9a27e;
     color: white;
     border: none;
     border-radius: 20px;
-    margin: 0 auto; 
-     cursor: pointer;
+    margin: 0 auto;
+    cursor: pointer;
 }
-.moveCS{
-	margin: 0 auto;
-	text-align: center;
-}
+
 html {
-	margin: 0;
-	padding: 0;
-	scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
 }
-@media (prefers-reduced-motion: reduce){
-	html{
-		scroll-behavior: auto;
-	}
+
+li {
+    font-weight: 300;
+    font-size: large;
+}
+
+.interactionList, .recommendList {
+    margin-top: 15px;
+    font-size: large;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+h3 {
+    font-size: x-large;
+}
+
+.purchase-section table, .review-section table {
+    margin-top: 15px;
+}
+
+/* 10/21 추가 */
+li{
+	font-weight: 300;
+	font-size: large;
+}
+select{
+	min-height: 20px;
+	font-size: large;
+}
+.interactionList, .recommendList{
+	margin-top: 15px;
+	font-size: large;
+	margin-left: 25px;
+	margin-right: 25px;
+}
+h3{
+	font-size: x-large;
+}
+label{
+	font-size: large;
+}
+.purchase-section table{
+	margin-top: 15px;
+}
+
+.review-section table{
+	margin-top: 10px;
 }

@@ -2,7 +2,7 @@ INSERT INTO function VALUES ('1', '뼈 건강');
 INSERT INTO function VALUES ('2', '근육 건강');
 INSERT INTO function VALUES ('3', '미네랄');
 INSERT INTO function VALUES ('4', '철분 보충');
-INSERT INTO function VALUES ('5', '여성 건강');
+INSERT INTO function VALUES ('5', '여성/남성 건강');
 INSERT INTO function VALUES ('6', '심혈관 건강');
 INSERT INTO function VALUES ('7', '스트레스 개선');
 INSERT INTO function VALUES ('8', '항산화제');

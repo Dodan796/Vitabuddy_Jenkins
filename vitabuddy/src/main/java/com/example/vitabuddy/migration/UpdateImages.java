@@ -10,7 +10,7 @@ import java.sql.PreparedStatement;
 public class UpdateImages {
     public static void main(String[] args) {
         String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";
-        String username = "system";
+        String username = "C##VITABUDDY";
         String password = "1234";
 
         // 시작 SupID 및 파일 시작 경로

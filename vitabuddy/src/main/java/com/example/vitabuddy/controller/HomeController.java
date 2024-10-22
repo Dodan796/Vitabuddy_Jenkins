@@ -18,10 +18,14 @@ public class HomeController {
 		return "home";
 	}
 	
-	// 3. 상품상세페이지
-	@RequestMapping("/prdDetail")
-	public String prdDetail() {
-		return"supplement/productDetailView";
+    // 4. 상점 페이지 추가
+    @RequestMapping("/supplementList")
+    public String supplementList() {
+        return "supplement/supplementList";  // supplementList.jsp로 연결
+    }
+    
+    @RequestMapping("/wish")
+	public String wish() {
+		return "member/wishlistView";
 	}
-	
 }
