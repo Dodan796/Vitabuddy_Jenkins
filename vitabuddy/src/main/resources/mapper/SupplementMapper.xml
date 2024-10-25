@@ -7,11 +7,12 @@
     <!-- 사용자가 복용 중인 영양제 조회 -->
     <select id="selectUserSupplements" parameterType="String" 
             resultType="com.example.vitabuddy.dto.UserSupplementDTO">
-        SELECT s.SupID AS supID, s.SupName AS supName, s.SupBrand AS supBrand
-        FROM users_supplement us
-        JOIN supplement s ON us.SupID = s.SupID
-        WHERE us.UserID = #{userId}
+        SELECT SupID AS supID, SupName AS supName, SupBrand AS supBrand, created_at
+        FROM view_users_supplement
+        WHERE UserID = #{userId}
+        ORDER BY created_at ASC
     </select>
+
     
     <!-- 키워드와 브랜드로 영양제 검색 -->
     <select id="findSupplementsByKeywordAndBrand" parameterType="map" 

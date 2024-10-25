@@ -93,7 +93,8 @@
                         <label>복용 중인 영양제</label>
 	                        <ul id="currentSupplementList">
 	                            <c:forEach var="supplement" items="${userSupplements}">
-	                                <li>${supplement.supName} - ${supplement.supBrand}</li>
+	                                <li>${supplement.supName} - ${supplement.supBrand}
+                                	<button onclick="deleteSupplement(${supplement.supID})">삭제</button><!-- 삭제버튼 추가. --></li>
 	                            </c:forEach>
 	                        </ul>
                         </div>
@@ -105,11 +106,7 @@
                     <div class="button-container">
 						<button class="submit-btn" id="submitBtn" type="submit" >정보변경</button>  <!--정보변경 버튼, 즉 submit을 눌렀을 때, 위 form 태그 시작쪽의 onsubmit이 적용되고 requestmapping url로 이동할 수 있도록 type="submit" 추가-->
 					</div>
-						</form>
-					
-                
-                    
-                
+						</form>                             
             </div>
         </section>
         <c:import url="/WEB-INF/views/layout/footer.jsp"/>

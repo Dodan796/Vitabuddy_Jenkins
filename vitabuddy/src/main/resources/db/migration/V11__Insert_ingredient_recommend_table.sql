@@ -18,3 +18,4 @@ VALUES ('6', 'L-아르기닌은 혈관 확장과 혈류 개선에 도움을 주�
 
 INSERT INTO ingredient_recommend (IngredientRecommendID, InteractionRecommend)
 VALUES ('7', '종합비타민은 전체적인 비타민과 미네랄을 균형 있게 공급하며, 아연과 마그네슘은 면역력 강화 및 근육 기능 향상에 기여합니다.');
+

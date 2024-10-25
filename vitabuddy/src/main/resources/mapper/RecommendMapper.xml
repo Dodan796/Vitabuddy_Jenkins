@@ -22,6 +22,7 @@
 		JOIN Ingredientsupplement isup ON s.SupID = isup.SupID
 		JOIN Ingredient i ON isup.IngredientID = i.IngredientID
 		WHERE u.UserID = #{userId}
+		ORDER BY us.created_at
 	</select>
 
 

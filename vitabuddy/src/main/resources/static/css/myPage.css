@@ -18,15 +18,9 @@ body {
     height: 100%;
 }
 
-footer {
-    width: 100%;
-    bottom: 0px;
-    position: absolute;
-}
-
 p {
     margin-left: 10px;
-    font-size: x-large;
+    font-size: 1.5em;
 }
 
 table {
@@ -34,7 +28,7 @@ table {
     margin-bottom: 20px;
     border-collapse: collapse;
     text-align: center;
-    font-size: large;
+    font-size: 1.15em;
 }
 
 th, td {
@@ -73,6 +67,8 @@ th, td {
 
 .mySupplement {
     counter-reset: supplement-counter; /* 번호 초기화 */
+    margin-bottom: 5%; /* 하단 콘텐츠간 여백 */
+	padding-top: 1.5%; /* 콘텐츠 박스 위쪽 여백 */
 }
 
 .mySupplement .supplement-item {
@@ -102,6 +98,7 @@ th, td {
     display: flex;
     justify-content: space-between;
     width: 100%;
+   	margin-bottom: 10%;
 }
 
 .horizontal_box {
@@ -129,6 +126,7 @@ th, td {
 
 label {
     color: #7e7b46;
+    font-size: 1em;
 }
 
 .left, .right {
@@ -139,7 +137,7 @@ label {
 h1 {
     text-align: center;
     color: #7e7b46;
-    font-size: xxx-large;
+    font-size: 2.25em;
 }
 
 h4 {
@@ -178,7 +176,7 @@ h4 {
     border: none;
     border-radius: 30px;
     cursor: pointer;
-    font-size: large;
+    font-size: 18px;
 }
 
 .search-box {
@@ -200,20 +198,25 @@ h4 {
     outline: none;
     width: 100%;
     background-color: transparent;
-    font-size: 16px;
+    font-size: 1em;
 }
 
 select {
     float: right;
     width: 10%;
+    min-height: 20px;
+	font-size: 1em;
 }
 
 .review-section {
     width: 90%;
+        margin-top: 5%;
 }
 
 .purchase-section {
     width: 90%;
+    margin-top: 5%;
+    margin-bottom: 10%;
 }
 
 .myReviewNo {
@@ -224,38 +227,22 @@ select {
     width: 15%;
 }
 
-.moveTopBtn {
-    text-align: center;
-    width: 20%;
-    padding: 10px;
-    background-color: #a9a27e;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    margin: 0 auto;
-    cursor: pointer;
-}
-
 html {
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
 }
 
-li {
-    font-weight: 300;
-    font-size: large;
-}
 
 .interactionList, .recommendList {
     margin-top: 15px;
-    font-size: large;
+    font-size: 1em;
     margin-left: 25px;
     margin-right: 25px;
 }
 
 h3 {
-    font-size: x-large;
+    font-size: 1.5em;
 }
 
 .purchase-section table, .review-section table {
@@ -263,26 +250,18 @@ h3 {
 }
 
 /* 10/21 추가 */
-li{
-	font-weight: 300;
-	font-size: large;
+li{	
+	font-size: 1em;
 }
-select{
-	min-height: 20px;
-	font-size: large;
+
+.recommentList{
+	padding-left: 3%;
+    padding-top: 3%;
+    padding-right: 3%;
+    font-size: 1em;
 }
-.interactionList, .recommendList{
-	margin-top: 15px;
-	font-size: large;
-	margin-left: 25px;
-	margin-right: 25px;
-}
-h3{
-	font-size: x-large;
-}
-label{
-	font-size: large;
-}
+
+
 .purchase-section table{
 	margin-top: 15px;
 }

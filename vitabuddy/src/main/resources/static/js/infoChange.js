@@ -105,3 +105,20 @@ function removeFromCurrentList(supId) {
         }
     });
 }
+/////////////////////////////////////////////////////////////////////////////////////////
+
+function deleteSupplement(supId) {
+    // 서버에 삭제 요청
+    $.ajax({
+        url: `/supplement/delete?userId=${userId}&supId=${supId}`, // userId는 전역 변수로 이미 설정되어 있음
+        method: 'DELETE',
+        success: function(response) {
+            alert(response); // 성공 메시지 표시
+            // 페이지 새로고침
+            location.reload(); // 삭제 후 페이지를 새로고침
+        },
+        error: function() {
+            alert('영양제 삭제에 실패했습니다.');
+        }
+    });
+}

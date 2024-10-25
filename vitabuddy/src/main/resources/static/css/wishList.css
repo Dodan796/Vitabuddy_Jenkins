@@ -1,0 +1,149 @@
+@charset "UTF-8";
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f4ef;
+    margin: 0;
+    padding: 0;
+}
+#wrap{
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+h1{
+	text-align:center;
+	 font-size: xxx-large;
+}
+.productList{
+	padding-right:10%;
+	padding-left:10%;
+}
+
+.container {
+	padding: 20px;
+    width: 80%;
+ 	margin: 50px auto;
+    height:auto;
+    overflow:hidden;
+    border-radius: 10px;
+    background-color: #e5e0da;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  color: #7e7b46; 
+    display: block;
+}
+
+table{
+	width:100%;
+	margin-bottom:20px;
+	border-collapse: collapse;
+    border-spacing: 0;
+    text-indent: initial;
+    font-size: 100%;
+}
+
+table thead th {
+	text-align: center;
+	display: table-cell;
+    vertical-align: inherit;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.selectText{
+	position: absolute;
+    align:center;
+    cursor: pointer;
+color: #a9a27e;
+}
+.selectDelete{
+	position: absolute;
+	margin-left: 4%;
+color: #a9a27e;
+    cursor: pointer;
+}
+
+.listHead{
+	
+	height: 46px;
+    border-bottom: 1px solid #7e7b46;
+    background: #fafafa;
+}
+
+td{
+	border-bottom: 1px solid #7e7b46;
+	margin: 0;
+	padding: 20px 0;
+}
+
+/* .selelctBox{
+	text-align:center;
+	vertical-align: inherit;
+    align-items: center;
+    
+    
+} */
+.itemImage{
+	padding-right: 1px;
+    vertical-align: top;
+}
+
+.itemInfo{
+	vertical-align: top;
+    padding-right: 80px;
+    padding-left: 30px;
+    
+}
+
+.status{
+	item-align:center;
+	margin-bottom: 8px;
+	/* display: block; */
+   /*  unicode-bidi: isolate; */
+    
+}
+
+.addCart{
+padding: 5px;
+ background-color: #a9a27e;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-left: auto;
+    text-align:center;
+    margin-bottom:5%;
+    
+}
+
+
+/* .addcart a{
+	text-decoration: none;
+	display: block;
+    width: 100%;
+    height: 100%;
+    color: #FFF;
+} */
+.selectBox.check{
+	margin-left: 40%;
+}
+.del{
+	padding: 5px;
+    background-color: #a9a27e;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-left: auto;
+     text-align:center;
+}
+
+input[type="checkbox" i] {
+	background-color: initial;
+    cursor: default;
+    appearance: auto;
+    box-sizing: border-box;
+    border: initial;
+    margin-left: 40%;
+}
