@@ -10,4 +10,6 @@
         FROM supplement
         WHERE SupID = #{supId}
     </select>
+    
+    
 </mapper>
