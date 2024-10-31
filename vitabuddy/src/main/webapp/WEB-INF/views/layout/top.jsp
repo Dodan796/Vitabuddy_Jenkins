@@ -2,12 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!-- top 메뉴 -->    
-<!-- top 메뉴 -->    
 <header>
     <div id="headerBox">
         <div id="logoBox">
             <%-- <a href="<c:url value='/home'/>"><img src="<c:url value=''/>" id="logoImg"></a> --%>
-            <a href="<c:url value='/home'/>">VITA BUDDY</a>
+            <a href="<c:url value='/home'/>">VITABUDDY</a>
         </div>
         <div id="topMenu"> 
         
@@ -23,10 +22,9 @@
             <a href="<c:url value='/member/logout'/>">로그아웃</a>
             <a href="<c:url value='/supplement/wishList'/>"><i class="fa-solid fa-heart"></i></a>                    
             <a href="<c:url value='/supplement/cartList'/>"><i class="fa-solid fa-cart-shopping"></i></a>
+            <a href="<c:url value='/member/myPage'/>"><i class="fa-solid fa-user"></i></a>
         </c:if>
         </div>
     </div>
     <hr>
 </header>
-
-            

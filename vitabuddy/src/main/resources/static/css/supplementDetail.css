@@ -134,6 +134,7 @@ table{
     margin-bottom: 15px;
 }
 
+
 /* 리뷰 작성 폼 */
 .reviewWrite {
     /* 간격 수정 padding: 30px; */
@@ -420,6 +421,43 @@ table{
 }
 .rate{
 	float: left;
+}
+
+
+/* 더보기 링크 스타일 */
+.toggleLink {
+    color: #7e7b46;
+    font-size: 1em;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.toggleLink:hover {
+    color: #71543d;
+}
+
+/* 화살표 스타일 */
+.arrow {
+    font-size: 0.9em;
+    transition: transform 0.3s;
+}
+
+.arrow.rotate {
+    transform: rotate(180deg); /* 아래로 화살표를 돌리기 */
+}
+
+.hidden {
+    display: none;
+}
+
+.clickable {
+    cursor: pointer;
+    display: inline;
+}
+
+.arrow.rotate {
+    transform: rotate(180deg);
 }
 
 .prdInfo table {

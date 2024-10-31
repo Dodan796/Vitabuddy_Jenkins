@@ -6,7 +6,7 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'myriad'; /* 폰트 수정 */
     background-color: #f7f4ef;
     margin: 0;
     padding: 0;
@@ -146,24 +146,6 @@ h4 {
     color: #7e7b46;
 }
 
-.phone-number {
-    display: inline;
-}
-
-.phone-number input {
-    width: 20%;
-    display: inline-block;
-}
-
-.zipcode button {
-    padding: 10px;
-    width: 200px;
-    background-color: #a9a27e;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-}
 
 .submit-btn {
     display: block;
@@ -176,29 +158,7 @@ h4 {
     border: none;
     border-radius: 30px;
     cursor: pointer;
-    font-size: 18px;
-}
-
-.search-box {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #e9e5e0;
-}
-
-.search-box i {
-    color: #888;
-    margin-left: 10px;
-}
-
-.search-box input {
-    border: none;
-    outline: none;
-    width: 100%;
-    background-color: transparent;
-    font-size: 1em;
+    font-size: 1.2em;
 }
 
 select {
@@ -227,13 +187,6 @@ select {
     width: 15%;
 }
 
-html {
-    margin: 0;
-    padding: 0;
-    scroll-behavior: smooth;
-}
-
-
 .interactionList, .recommendList {
     margin-top: 15px;
     font-size: 1em;
@@ -246,7 +199,7 @@ h3 {
 }
 
 .purchase-section table, .review-section table {
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
 /* 10/21 추가 */
@@ -262,10 +215,39 @@ li{
 }
 
 
-.purchase-section table{
-	margin-top: 15px;
+/* .purchase-section table{
+	margin-top: 10px;
 }
 
 .review-section table{
 	margin-top: 10px;
+}
+ */
+
+/*10/29 시간 체크박스 테스트 코드*/
+
+
+.right-options {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: auto;
+}
+
+.filter-options {
+    display: flex;
+    gap: 5px;
+}
+
+.filter-bar select {
+    margin-left: auto; 
+    width: 32%; 
+    font-size: 1em;
+}
+
+.filter-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
 }

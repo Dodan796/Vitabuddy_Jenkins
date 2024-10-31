@@ -1,5 +1,7 @@
 package com.example.vitabuddy.controller;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,12 +17,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.vitabuddy.dto.UserSupplementDTO;
 import com.example.vitabuddy.model.InteractionVO;
-import com.example.vitabuddy.model.RecommendVO;
+import com.example.vitabuddy.model.PurchaseHistoryVO;
 import com.example.vitabuddy.model.ReviewVO;
+import com.example.vitabuddy.model.RecommendVO;
+import com.example.vitabuddy.service.CartListService;
+import com.example.vitabuddy.service.IReviewService;
 import com.example.vitabuddy.service.InteractionService;
 import com.example.vitabuddy.service.RecommendService;
-import com.example.vitabuddy.service.ReviewService;
 import com.example.vitabuddy.service.SupplementService;
+import com.example.vitabuddy.model.SupplementStoreVO;
 
 @Controller
 @RequestMapping("/member")
@@ -30,14 +35,17 @@ public class MyPageController {
     private SupplementService supService;
 
     @Autowired
-    private ReviewService reviewService; 
+    private IReviewService reviewService;
 
     @Autowired
     private InteractionService intService;
-    
-    @Autowired 
-    private RecommendService recommendService;  //영양제의 추천 성분을 위한 서비스 주입
-    
+
+    @Autowired
+    private RecommendService recommendService;
+
+    @Autowired
+    private CartListService cartService;
+
     // 마이페이지로 이동
     @GetMapping("/myPage")
     public String myPage(HttpSession session, Model model) {
@@ -50,52 +58,72 @@ public class MyPageController {
         // 사용자가 복용 중인 영양제 목록을 조회
         List<UserSupplementDTO> userSupplements = supService.getUserSupplements(userId);
         model.addAttribute("userSupplements", userSupplements);
-        
+
         // 상호작용 정보 조회
         List<String> ingredientNames = intService.getIngredientNames(userId);
         List<InteractionVO> interactions = intService.getInteractionDetails(userId);
-        System.out.println("Interactions 데이터: " + interactions);
-    
         model.addAttribute("ingredientNames", ingredientNames);
         model.addAttribute("interactions", interactions);
-        
-        //----------------------------------------------------------------
-        //영양제 성분 추천
-        //1. 사용자가 선택한 영양제 목록의 "주성분" 조회
+
+        // 추천 성분 및 관련 상위 제품 조회
         ArrayList<RecommendVO> recommendIngredientList = recommendService.recommendIngredients(userId);
-        //model.addAttribute("recommendIngredientList", recommendIngredientList);
-        System.out.println(recommendIngredientList);
-        
+        Map<String, SupplementStoreVO> topProductsByIngredient = new HashMap<>();
         Map<Object, ArrayList<RecommendVO>> allRecommendLists = new HashMap<>();
 
         for (int i = 0; i < recommendIngredientList.size(); i++) {
             String ingredientId = recommendIngredientList.get(i).getIngredientId();
-            System.out.println("Processing ingredientId : " + ingredientId);
-            
-            // 각 영양제에 대해 추천 성분 리스트를 가져옴
             ArrayList<RecommendVO> recommendLists = recommendService.interactionRecommend(ingredientId);
-            System.out.println("서비스계층 테스트 출력" + recommendLists);
-            for (RecommendVO recommendVO : recommendLists) {
-            	System.out.println("Ingredients: " + recommendVO.getIngredients());
-                System.out.println("Interaction Recommend: " + recommendVO.getInteractionRecommend());
-            }
-            // Map에 추천 리스트 저장
             allRecommendLists.put(i, recommendLists);
-            
-            System.out.println("Recommendations for ingredient " + ingredientId + " : " + recommendLists);
+
+            // 각 성분별 최상위 상품 조회 (상품명만 추가)
+            SupplementStoreVO topProduct = reviewService.getTopProductByIngredient(ingredientId);
+            if (topProduct != null) {
+                topProductsByIngredient.put(ingredientId, topProduct);
+                
+                // 콘솔 출력
+                System.out.println("Ingredient ID: " + ingredientId);
+                System.out.println("Top Product Name: " + topProduct.getSupName());
+            } else {
+                System.out.println("No top product found for Ingredient " + ingredientId);
+            }
         }
 
-        // JSP에 Map을 전달
-        model.addAttribute("allRecommendLists", allRecommendLists);
-        System.out.println("allRecommendList 테스트 출력" + allRecommendLists);
+        // 모델에 데이터 추가
         model.addAttribute("recommendIngredientList", recommendIngredientList);
+        model.addAttribute("topProductsByIngredient", topProductsByIngredient);
+        model.addAttribute("allRecommendLists", allRecommendLists);
 
-        //----------------------------------------------------------------
-        
         // 사용자가 작성한 리뷰 목록을 조회
         List<ReviewVO> userReviews = reviewService.getUserReviews(userId);
-        model.addAttribute("reviews", userReviews); 
+        model.addAttribute("reviews", userReviews);
 
-        return "member/myPage"; 
+        // 구매내역 출력 (1개월, 1~3개월, 3개월 이상)
+        ArrayList<PurchaseHistoryVO> myPagePurchaseLists = cartService.getUserPurchaseHistory(userId);
+        LocalDate today = LocalDate.now();
+        LocalDate oneMonthAgo = today.minusMonths(1);
+        LocalDate threeMonthsAgo = today.minusMonths(3);
+
+        ArrayList<PurchaseHistoryVO> recentPurchases = new ArrayList<>();
+        ArrayList<PurchaseHistoryVO> midTermPurchases = new ArrayList<>();
+        ArrayList<PurchaseHistoryVO> oldPurchases = new ArrayList<>();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        for (PurchaseHistoryVO purchase : myPagePurchaseLists) {
+            LocalDate orderDate = LocalDate.parse(purchase.getOrderId(), formatter);
+            if (orderDate.isAfter(oneMonthAgo)) {
+                recentPurchases.add(purchase);
+            } else if (orderDate.isAfter(threeMonthsAgo)) {
+                midTermPurchases.add(purchase);
+            } else {
+                oldPurchases.add(purchase);
+            }
+        }
+
+        model.addAttribute("recentPurchases", recentPurchases);
+        model.addAttribute("midTermPurchases", midTermPurchases);
+        model.addAttribute("oldPurchases", oldPurchases);
+
+        return "member/myPage";
     }
 }

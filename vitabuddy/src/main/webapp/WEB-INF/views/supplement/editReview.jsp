@@ -17,7 +17,7 @@
 <body>
 	<section class="reviewCorrect">
 		<form method="post" id="reviewForm" enctype="multipart/form-data"
-				action="/supplement/supplementDetail/${sup.supId}/review/${review.reviewNo}/edit">
+				action="/api/supplement/supplementDetail/${sup.supId}/review/${review.reviewNo}/edit">
 				<input type="hidden" name="reviewNo" value="${review.reviewNo}">
 				<input type="hidden" name="userId" value="${sessionScope.sid}">
 				<input type="hidden" name="supId" value="${supplementDetail.supId}">
@@ -66,8 +66,7 @@
 
 					<!-- 해시태그 -->
 					<tr>
-						<td>
-							<select id="hashtag" name="reviewHashtag">
+						<td><select id="hashtag" name="reviewHashtag">
 								<option value="">없음</option>
 								<option value="#가성비최고">#가성비최고</option>
 								<option value="#효과빠름">#효과빠름</option>
@@ -78,12 +77,11 @@
 								<option value="#소화가 편해요">#소화가 편해요</option>
 								<option value="#근육회복에 좋아요">#근육회복에 좋아요</option>
 								<option value="#탈모예방에 좋아요">#탈모예방에 좋아요</option>
-								<option value="#눈이 편안해요">눈이 편안해요</option>
+								<option value="#눈이 편안해요">#눈이 편안해요</option>
 								<c:forEach var="tag" items="${taglist}">
 									<option value="${tag.tagNo}">${tag.tagName}</option>
 								</c:forEach>
-							</select>
-						</td>
+						</select></td>
 
 						<!-- 복용기간 설정 -->
 						<td><input type="date" id="date1" name="startDate"

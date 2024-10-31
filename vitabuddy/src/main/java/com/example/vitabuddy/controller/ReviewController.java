@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("/supplement")
+@RequestMapping("/api/supplement")
 public class ReviewController {
 
     @Autowired
@@ -29,17 +29,10 @@ public class ReviewController {
     @Autowired
 	private SupplementDetailService supplementDetailService;
 
-    private static final String UPLOAD_DIR = "C:/Review_Upload/"; // 파일이 저장될 경로
+    // 파일이 저장될 경로
+    private static final String UPLOAD_DIR = "C:/Review_Upload/"; 
 
-    // 1. 리뷰 목록 조회
-    @GetMapping("/supplementDetail/{supId}/reviews")
-    public String getReviewList(@PathVariable("supId") int supId, Model model) {
-        List<ReviewVO> reviews = reviewService.reviewLists(supId);
-        model.addAttribute("reviewList", reviews);
-        return "supplement/reviewList";
-    }
-
-    // 2. 리뷰 작성
+    // 1. 리뷰 작성
     @PostMapping("/supplementDetail/{supId}/review")
     public String insertReview(@PathVariable("supId") int supId,
                                @RequestParam("reviewTitle") String reviewTitle,
@@ -57,7 +50,7 @@ public class ReviewController {
         }
 
         ReviewVO reviewVO = new ReviewVO();
-        String reviewNo = UUID.randomUUID().toString(); // 리뷰 ID 생성
+        String reviewNo = UUID.randomUUID().toString();
         reviewVO.setReviewNo(reviewNo);
         reviewVO.setSupId(supId);
         reviewVO.setUserId(userId);
@@ -105,7 +98,7 @@ public class ReviewController {
         return "redirect:/api/supplement/supplementDetail/" + supId;
     }
 
-    // 3. 리뷰 삭제
+    // 2. 리뷰 삭제
     @PostMapping("/supplementDetail/{supId}/review/{reviewNo}/delete")
     public String deleteReview(@PathVariable("supId") int supId, @PathVariable("reviewNo") String reviewNo, HttpSession session) {
         String userId = (String) session.getAttribute("sid");
@@ -121,7 +114,7 @@ public class ReviewController {
         return "redirect:/api/supplement/supplementDetail/" + supId;
     }
 
-	// 4. 리뷰 수정
+	// 3. 리뷰 수정
 	@PostMapping("/supplementDetail/{supId}/review/{reviewNo}/edit")
 	public String updateReview(@PathVariable("supId") int supId, 
 	                           @PathVariable("reviewNo") String reviewNo,
@@ -187,7 +180,7 @@ public class ReviewController {
 	    return "redirect:/api/supplement/supplementDetail/" + supId;
 	}
 
-	// 5. 리뷰 수정 폼 조회
+	// 4. 리뷰 수정 폼 조회
 	@GetMapping("/supplementDetail/{supId}/review/{reviewNo}/editForm")
 	public String showEditReviewPage(@PathVariable("supId") int supId, 
 	                                 @PathVariable("reviewNo") String reviewNo,

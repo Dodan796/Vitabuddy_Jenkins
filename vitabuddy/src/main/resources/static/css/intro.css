@@ -1,4 +1,4 @@
-/* ÀüÃ¼ ½ºÅ¸ÀÏ */
+/* ì „ì²´ ìŠ¤íƒ€ì¼ */
 * {
     margin: 0;
     padding: 0;
@@ -19,7 +19,7 @@ a{
 	text-decoration: none;
 }
 
-/* ¹öÆ° ÅÂ±× ±âº» css Á¦°Å */
+/* ë²„íŠ¼ íƒœê·¸ ê¸°ë³¸ css ì œê±° */
 button{
 	max-width: 150px;
 	font-family: inherit;
@@ -33,7 +33,7 @@ button{
 }
 
 
-/* ÀÎÆ®·Î ÀÌ¹ÌÁö */
+/* ì¸íŠ¸ë¡œ ì´ë¯¸ì§€ */
 .introTitle img {
     opacity: 50%;
     position: absolute;
@@ -45,16 +45,19 @@ button{
     z-index: 1;
 }
 
-/* ¸ŞÀÎ Å¸ÀÌÆ² */
+/* ë©”ì¸ íƒ€ì´í‹€ */
 .main-title {
     position: relative;
     z-index: 2;
     color: #583b1f;
-    font-size: 5vw; /* ³Êºñ¿¡ µû¶ó ±ÛÀÚ Å©±â Á¶Á¤ */
+    /* ê¸€ì í¬ê¸° ì¡°ì • */
+    font-size: 4.3vw; /* ë„ˆë¹„ì— ë”°ë¼ ê¸€ì í¬ê¸° ì¡°ì • */
     font-weight: 800;
-    text-align: center;
+    /* ì œëª© ê¸€ì ìš°ì¸¡ ì •ë ¬ */
+    text-align: right;
     margin-top: 5vh;
-    padding: 0 20px; 
+    /* padding ìˆ˜ì • */
+    padding: 0 5%; 
     line-height: 1.2; 
 }
 
@@ -66,17 +69,17 @@ section div {
     align-items: center;
 }
 
-/* ¶óº§ ¿ŞÂÊ Á¤·Ä */
+/* ë¼ë²¨ ì™¼ìª½ ì •ë ¬ */
 label {
     display: block;
     text-align: left; 
     margin-bottom: 5px; 
 }
 
-/* input ÇÊµå Áß¾Ó Á¤·Ä */
+/* input í•„ë“œ ì¤‘ì•™ ì •ë ¬ */
 .loginForm input.formTxt {
     display: block;
-    margin: 0 auto; /* Áß¾Ó Á¤·Ä */
+    margin: 0 auto; /* ì¤‘ì•™ ì •ë ¬ */
     width: 100%; 
     max-width: 600px; 
     padding: 10px;
@@ -88,7 +91,7 @@ label {
     background-color: #f2f2f2; 
 }
 
-/* ·Î±×ÀÎ Æû Áß¾Ó Á¤·Ä */
+/* ë¡œê·¸ì¸ í¼ ì¤‘ì•™ ì •ë ¬ */
 .loginForm {
     width: 100%; 
     max-width: 500px; 
@@ -100,7 +103,7 @@ label {
     margin-bottom:20px;
 }
 
-/* ·Î±×ÀÎ ¹öÆ° Áß¾Ó Á¤·Ä */
+/* ë¡œê·¸ì¸ ë²„íŠ¼ ì¤‘ì•™ ì •ë ¬ */
 .loginForm #loginSubmit {
     width: 100px;
     height: 40px;
@@ -139,21 +142,31 @@ label {
     border: solid 1.5px #583b1f;
 }
 
-/* ¹öÆ° hover */
+/* ë²„íŠ¼ hover */
 .btnFilled:hover {
     background-color: #71543d;
     transition: background-color 0.3s ease;
 }
 
-/* È­¸é Å©±â Á¶Á¤½Ã ±ÛÀÚÅ©±â */
+/* í™”ë©´ í¬ê¸° ì¡°ì •ì‹œ ê¸€ìí¬ê¸° */
 @media (max-width: 768px) {
     .main-title {
-        font-size: 8vw; /* ÀÛÀº È­¸é */
+        font-size: 8vw; /* ì‘ì€ í™”ë©´ */
     }
 }
 
 @media (max-width: 480px) {
     .main-title {
-        font-size: 6vw; /* ´õ ÀÛÀº È­¸é */
+        font-size: 6vw; /* ë” ì‘ì€ í™”ë©´ */
     }
 }
+
+section {/* ì„¹ì…˜ í™”ë©´ ìš°ì¸¡ ì´ë™ */
+	width: 70%;
+    position: relative;
+    left: 30%; /* í™”ë©´ì˜ 30%ì—ì„œ ì‹œì‘ */
+    text-align: center; 
+}
+
+
+

@@ -5,6 +5,10 @@
 	height:60px; 
 	line-height:60px; 
 	padding:0;
+	/* 페이지 별 헤더 설정 통일 */
+	margin:0 auto;
+	font-family:myriad; 
+	 
 }
 
 #logoBox{ /*logo img 영역*/
@@ -13,19 +17,31 @@
 	line-height:60px;
 	padding-left:30px;
 	font-weight:900;
-	font-size:30px;
+	font-size:2.0em;
 }
 
 #topMenu{
 	float:right;
 	padding-right:30px;
 	font-weight:700;
+	
 }
+
+#topMenu a {/* 아이콘 간격 추가 */
+    padding-left: 20px;
+    font-size: 1.0em;
+}
+
+#topMenu i {/* 아이콘 사이즈 추가 */
+    font-size: 1.2em;
+}
+
 
 header a {
     color: #583b1f; 
     text-decoration: none; 
-    font-weight: bold; 
+    /* 잘못 들어가서 삭제 */
+    /* font-weight: bold;  */
 }
 
 
@@ -33,3 +49,9 @@ header a:hover {
     opacity: 0.5;
 }
 
+hr {/* hr 태그 설정 추가 */
+    border-width: 1.2px 0 0 0;
+    border-style: solid;
+    border-color: #583b1f;
+    margin-top: 5px;
+}

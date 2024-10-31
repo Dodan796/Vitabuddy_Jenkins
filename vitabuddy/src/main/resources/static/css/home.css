@@ -44,14 +44,14 @@ h1 {
 
 /* 메인 메뉴 */
 .mainMenu {
-    margin-top: 30px;
+    /* margin-top: 30px; */
     padding: 20px;
     font-size: 20px;
     font-weight: 900;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin: 20px 0;
+    /* margin: 20px 0; */
 }
 
 /* 메뉴 이미지 */
@@ -146,12 +146,12 @@ h1 {
     transition: background-color 0.3s ease;
 }
 
-/* 인기 상품 css 추가 */
+/* 10/22 인기 상품 css 추가 */
 .home{
-	padding-bottom: 5%;
+	/* padding-bottom: 5%; */
 	width: 90%;
-	padding-top: 5%;
-	margin-bottom: 20px;
+	/* padding-top: 5%; */
+	/* margin-bottom: 20px; */
 }
 
 /* 인기상품 */
@@ -189,4 +189,69 @@ h3{
 	margin-top: 30px;
 	margin-bottom: 20px;
 	color: #583b1f;
+}
+
+/*  */
+button{
+	border: none;
+	background: transparent;
+	cursor: pointer;
+	color: #583b1f;
+	font-size: 1em;
+}
+
+/* 카테고리 버튼 */
+.category-buttons {
+    display: flex;
+    gap: 20px; 
+    justify-content: center; 
+    width: 40%;
+}
+
+.category-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 1em;
+}
+
+.category-buttons button.active {
+    text-decoration: underline;
+}
+
+.home{
+	padding-bottom: 3%;
+}
+
+/* 페이지네이션 */
+.pagination .prev,
+.pagination .next{
+	font-size: 1.5em;
+	
+}
+
+.pagination {
+    display: flex;
+    align-items: center; /* 수직 중앙 정렬 */
+    justify-content: center;
+    gap: 8px; /* 버튼 사이 간격 */
+    width: 10%;
+}
+
+.pagination button {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center; 
+}
+
+#page-indicator {
+    display: flex;
+    align-items: center; 
+}
+
+#page-indicator span {
+    margin: 0 5px; 
+    cursor: pointer;
 }

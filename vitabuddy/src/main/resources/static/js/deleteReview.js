@@ -10,7 +10,7 @@ $(document).ready(function () {
 
             $.ajax({
                 type: 'POST',
-                url: `/supplement/supplementDetail/${supId}/review/${reviewNo}/delete`,
+                url: `/api/supplement/supplementDetail/${supId}/review/${reviewNo}/delete`,
                 success: function () {
                     alert('리뷰가 삭제되었습니다.');
                     location.reload(); // 페이지 새로고침

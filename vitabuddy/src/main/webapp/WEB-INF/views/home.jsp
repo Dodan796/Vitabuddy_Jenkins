@@ -2,19 +2,21 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
  	<link rel="stylesheet" type="text/css" href="<c:url value='/css/home.css'/>">
+ 	<script src="<c:url value='/js/home.js'/>" defer></script>
 	<c:import url="/WEB-INF/views/layout/head.jsp" />	 
 </head>
 <body>
 <div id="wrap">
 <c:import url="/WEB-INF/views/layout/top.jsp" />
 	
-	<h1>VITA BUDDY</h1>
+	<h1>VITABUDDY</h1>
 	
 	<!-- 검색창 -->
 	<div class="search">
@@ -43,25 +45,92 @@
 	</div>
 </section>	
 <br><br>
-<section class="home">
+<section class="home item">
     <h2>인기상품</h2>
-    <h3>브랜드별 인기상품</h3>
-    
-    <div class="bestItems">
-		<c:forEach var="sup" items="${topSupplements}">
-		    <div class="bestItem">
-		        <a href="<c:url value='/api/supplement/supplementDetail/${sup.supId}'/>">
-		            <img src="data:image/png;base64,${sup.base64SupImg}" alt="${sup.supName}" width="200" height="200">
-		        </a>
-		        <p>${sup.supName}</p>
-		        <p>${sup.supBrand}</p>
-		        <p><fmt:formatNumber value="${sup.supPrice}" pattern="#,###" /> 원</p>
-		    </div>
-		</c:forEach>
 
+    <!-- 카테고리 버튼 -->
+		<div class="category-buttons">
+		    <button data-category="brand" onclick="selectCategory('brand')" class="category-button"><h3>브랜드별 인기상품</h3></button>
+		    <button data-category="function" onclick="selectCategory('function')" class="category-button"><h3>기능별 인기상품</h3></button>
+		    <button data-category="ingredient" onclick="selectCategory('ingredient')" class="category-button"><h3>성분별 인기상품</h3></button>
+		</div>
+
+    <!-- 브랜드별 인기상품 -->
+    <div id="brand" class="bestItems category-section" style="display: grid;" data-items='${topSupplementsBrand}'>
+        <c:forEach var="sup" items="${topSupplementsBrand}" varStatus="status">
+            <div class="bestItem" style="<c:if test='${status.index >= 6}'>display:none;</c:if>">
+                <a href="<c:url value='/api/supplement/supplementDetail/${sup.supId}'/>">
+                    <img class="prdImg" src="data:image/png;base64,${sup.base64SupImg}" alt="${sup.supName}" width="200" height="200">
+                </a>
+                <p title="${fn:trim(fn:replace(fn:substringAfter(sup.supName, sup.supBrand), ',', ''))}">
+				    <c:choose>
+				        <c:when test="${fn:length(fn:trim(fn:replace(fn:substringAfter(sup.supName, sup.supBrand), ',', ''))) > 13}">
+				            ${fn:substring(fn:trim(fn:replace(fn:substringAfter(sup.supName, sup.supBrand), ',', '')), 0, 13)}...
+				        </c:when>
+				        <c:otherwise>
+				            ${fn:trim(fn:replace(fn:substringAfter(sup.supName, sup.supBrand), ',', ''))}
+				        </c:otherwise>
+				    </c:choose>
+				</p>
+                <p>${sup.supBrand}</p>
+                <p><fmt:formatNumber value="${sup.supPrice}" pattern="#,###" /> 원</p>
+            </div>
+        </c:forEach>
+    </div>
+
+    <!-- 기능별 인기상품 -->
+    <div id="function" class="bestItems category-section" style="display:none;" data-items='${topSupplementsFunction}'>
+        <c:forEach var="sup" items="${topSupplementsFunction}" varStatus="status">
+            <div class="bestItem" style="<c:if test='${status.index >= 6}'>display:none;</c:if>">
+                <a href="<c:url value='/api/supplement/supplementDetail/${sup.supId}'/>">
+                    <img class="prdImg" src="data:image/png;base64,${sup.base64SupImg}" alt="${sup.supName}" width="200" height="200">
+                </a>
+                <p title="${fn:trim(fn:replace(fn:substringAfter(sup.supName, sup.supBrand), ',', ''))}">
+				    <c:choose>
+				        <c:when test="${fn:length(fn:trim(fn:replace(fn:substringAfter(sup.supName, sup.supBrand), ',', ''))) > 13}">
+				            ${fn:substring(fn:trim(fn:replace(fn:substringAfter(sup.supName, sup.supBrand), ',', '')), 0, 13)}...
+				        </c:when>
+				        <c:otherwise>
+				            ${fn:trim(fn:replace(fn:substringAfter(sup.supName, sup.supBrand), ',', ''))}
+				        </c:otherwise>
+				    </c:choose>
+				</p>
+                <p>${sup.supBrand}</p>
+                <p><fmt:formatNumber value="${sup.supPrice}" pattern="#,###" /> 원</p>
+            </div>
+        </c:forEach>
+    </div>
+
+    <!-- 성분별 인기상품 -->
+    <div id="ingredient" class="bestItems category-section" style="display:none;" data-items='${topSupplementsIngredient}'>
+        <c:forEach var="sup" items="${topSupplementsIngredient}" varStatus="status">
+            <div class="bestItem" style="<c:if test='${status.index >= 6}'>display:none;</c:if>">
+                <a href="<c:url value='/api/supplement/supplementDetail/${sup.supId}'/>">
+                    <img class="prdImg" src="data:image/png;base64,${sup.base64SupImg}" alt="${sup.supName}" width="200" height="200">
+                </a>
+                <p title="${fn:trim(fn:replace(fn:substringAfter(sup.supName, sup.supBrand), ',', ''))}">
+				    <c:choose>
+				        <c:when test="${fn:length(fn:trim(fn:replace(fn:substringAfter(sup.supName, sup.supBrand), ',', ''))) > 13}">
+				            ${fn:substring(fn:trim(fn:replace(fn:substringAfter(sup.supName, sup.supBrand), ',', '')), 0, 13)}...
+				        </c:when>
+				        <c:otherwise>
+				            ${fn:trim(fn:replace(fn:substringAfter(sup.supName, sup.supBrand), ',', ''))}
+				        </c:otherwise>
+				    </c:choose>
+				</p>
+                <p>${sup.supBrand}</p>
+                <p><fmt:formatNumber value="${sup.supPrice}" pattern="#,###" /> 원</p>
+            </div>
+        </c:forEach>
+    </div>
+
+    <!-- 페이지네이션 -->
+    <div class="pagination" id="pagination" style="display:none;">
+        <button class="prev" onclick="goToPage('prev')"><i class="fa-solid fa-caret-left"></i></button>
+        <span id="page-indicator"></span>
+        <button class="next" onclick="goToPage('next')"><i class="fa-solid fa-caret-right"></i></button>
     </div>
 </section>
-
 
 
 <c:import url="/WEB-INF/views/layout/footer.jsp" />
