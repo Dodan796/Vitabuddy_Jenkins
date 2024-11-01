@@ -73,7 +73,7 @@
 				    </c:choose>
 				</p>
                 <p>${sup.supBrand}</p>
-                <p><fmt:formatNumber value="${sup.supPrice}" pattern="#,###" /> 원</p>
+                <p>₩ <fmt:formatNumber value="${sup.supPrice}" pattern="#,###" /><!-- 원 --></p>
             </div>
         </c:forEach>
     </div>
@@ -96,7 +96,7 @@
 				    </c:choose>
 				</p>
                 <p>${sup.supBrand}</p>
-                <p><fmt:formatNumber value="${sup.supPrice}" pattern="#,###" /> 원</p>
+                <p>₩ <fmt:formatNumber value="${sup.supPrice}" pattern="#,###" /> <!-- 원 --></p>
             </div>
         </c:forEach>
     </div>
@@ -119,7 +119,7 @@
 				    </c:choose>
 				</p>
                 <p>${sup.supBrand}</p>
-                <p><fmt:formatNumber value="${sup.supPrice}" pattern="#,###" /> 원</p>
+                <p>₩ <fmt:formatNumber value="${sup.supPrice}" pattern="#,###" /><!-- 원 --></p>
             </div>
         </c:forEach>
     </div>

@@ -4,9 +4,16 @@
 $(function () {
   $("#category ul li a").on("click", function (event) {
     event.preventDefault();
+    
+    // 모든 카테고리에서 active 클래스 제거
+    $("#category ul li a").removeClass("active");
+    
 
     // 선택된 상위 카테고리 (functions, ingredients, brands)
     var selectedCategory = $(this).parent().data("category"); //3가지 중 할당
+   
+    // 선택된 카테고리에 active 클래스 추가
+    $(this).addClass("active");
 
     // API URL 선택 (카테고리별로 URL 다르게 설정) - 수정사항 1
     var apiUrl = "";

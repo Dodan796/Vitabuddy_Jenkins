@@ -15,7 +15,7 @@
         <link rel="stylesheet" type="text/css" href="<c:url value='/css/infoChange.css'/>" >   <!-- 로컬 sts 환경에 맞춰 경로 지정 -->
         <c:import url="/WEB-INF/views/layout/head.jsp"/> 
         <meta charset="UTF-8"> 
-        <title>회원 정보 수정</title>
+        <title>회원 정보/ 영양제 관리</title>
     </head>
     
     <body>
@@ -23,7 +23,7 @@
         <section id="wrap"> 
             <div class="container">
                 <div class="headers"> 
-                    <h1>회원 정보 수정</h1>
+                    <h1>회원 정보/ 영양제 관리</h1>
                 </div> 
                 
 				<div class="temp">
@@ -32,6 +32,7 @@
 							<div class="horizontal_box">
 								<label>이름</label>
 								<input type="text" name="userName" value="${myInfo.userName}" required/>
+								<p></p>
 								<label>비밀번호 변경</label>
 			            		<input type="password"  name="userPwd" id="userPwd" oninput="pwCheck()" />  <!-- required 제거 -->
 			            		<p id="pwLeng"></p>
@@ -51,15 +52,17 @@
 									 - 
 									<input type="text" name="userPh3" id="userPh3" placeholder="1234" maxlength="4" value="${fn:split(myInfo.userPh,'-')[2]}" required/>
 								</div>
-								
+								<p></p>
 								<div class="zipcode">
 									<label>우편번호 입력</label>
 									<div class="box_rowContents">
 										<input type="text" name="userZipcode" id="userZipcode" value="${myInfo.userZipcode}" required/>  <!-- value값 추가 : form 페이지에 보일 수 있게 -->
 										<button type ="button" name="searchBtn" onclick=searchZip()>우편번호 찾기</button>
 									</div>
+									<p></p>
 									<label>주소 변경</label>
 									<input type="text" name="userAddress1" id="userAddress1" value="${myInfo.userAddress1}" required/>
+									<p></p>
 									<label>상세 주소 변경</label>
 									<input type="text" id="userAddress2" name="userAddress2"  value="${myInfo.userAddress2}" required/>
 								</div>
@@ -104,7 +107,7 @@
                     <br>
                     <!-- 버튼 컨테이너 생성 -->
                     <div class="button-container">
-						<button class="submit-btn" id="submitBtn" type="submit" >정보변경</button>  <!--정보변경 버튼, 즉 submit을 눌렀을 때, 위 form 태그 시작쪽의 onsubmit이 적용되고 requestmapping url로 이동할 수 있도록 type="submit" 추가-->
+						<button class="submit-btn" id="submitBtn" type="submit" >회원 정보/ 영양제 변경</button>  <!--정보변경 버튼, 즉 submit을 눌렀을 때, 위 form 태그 시작쪽의 onsubmit이 적용되고 requestmapping url로 이동할 수 있도록 type="submit" 추가-->
 					</div>
 						</form>                             
             </div>

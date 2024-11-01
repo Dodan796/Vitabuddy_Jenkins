@@ -5,6 +5,7 @@
     font-family: 'myriad';
     /* 옆에 여백 없앰 */
     box-sizing: border-box;	
+    font-size: 1.0em;
     
 }
 
@@ -46,7 +47,7 @@ h1 {
 .mainMenu {
     /* margin-top: 30px; */
     padding: 20px;
-    font-size: 20px;
+    font-size: 1.5em;
     font-weight: 900;
     display: flex;
     justify-content: space-around;
@@ -80,7 +81,7 @@ h1 {
     width: 400px;
     background-color: #e5e0da;
     color: #583b1f;
-    border: solid 1px #583b1f;
+    border: solid 0.09em #583b1f;
     /* padding: 10px; */
 }
 
@@ -91,7 +92,6 @@ h1 {
     border: none;
     /* padding-left: 20px; */
     line-height: 50px;
-    font-size: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -109,41 +109,6 @@ h1 {
     align-items: center;
     /* 여백 제거 */
     margin-right: 0;
-}
-
-/* 버튼 */
-.btn {
-    max-width: 150px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 15px;
-    font-weight: 300;
-    text-decoration: none;
-    text-align: center;
-    cursor: pointer;
-    border-radius: 25px;
-    margin-bottom: 20px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.btnFilled {
-    background-color: #583b1f;
-    color: #e5e0da;
-}
-
-.btnUnfilled {
-    background-color: #e5e0da;
-    color: #583b1f;
-    border: solid 1.5px #583b1f;
-}
-
-/* 버튼 hover */
-.btnFilled:hover {
-    background-color: #71543d;
-    transition: background-color 0.3s ease;
 }
 
 /* 10/22 인기 상품 css 추가 */
@@ -183,12 +148,14 @@ h1 {
 h2{
 	color: #7e7b46;
 	margin-top: 30px;
+	font-size: 1.5em;
 }
 
 h3{
 	margin-top: 30px;
 	margin-bottom: 20px;
 	color: #583b1f;
+	font-size: 1.2em;
 }
 
 /*  */
@@ -255,3 +222,4 @@ button{
     margin: 0 5px; 
     cursor: pointer;
 }
+

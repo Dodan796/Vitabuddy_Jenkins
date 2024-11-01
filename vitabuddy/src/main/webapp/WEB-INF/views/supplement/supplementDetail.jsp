@@ -216,7 +216,7 @@
 								<option value="#소화가 편해요">#소화가 편해요</option>
 								<option value="#근육회복에 좋아요">#근육회복에 좋아요</option>
 								<option value="#탈모예방에 좋아요">#탈모예방에 좋아요</option>
-								<option value="#눈이 편안해요">#눈이 편안해요</option>
+								<option value="#눈이 편안해요">눈이 편안해요</option>
 								<c:forEach var="tag" items="${taglist}">
 									<option value="${tag.tagNo}">${tag.tagName}</option>
 								</c:forEach>
@@ -337,20 +337,41 @@
 			</section><!-- div를 section으로 변경 1018 -->
 
 			<nav>
-				<!-- 페이지네이션 -->
-				<div class="pagination">
-					<a href="#"
-						class="prev <c:if test='${currentPage == 1}'>disabled</c:if>"
-						data-page="${currentPage - 1}""><i
-						class="fa-solid fa-caret-left"></i></a>
-					<c:forEach var="i" begin="1" end="${totalPages}">
-						<a href="#" class="page" onclick="changePage(${i})">${i}</a>
-					</c:forEach>
-					<a href="#"
-						class="next <c:if test='${currentPage == totalPages}'>disabled</c:if>"
-						data-page="${currentPage + 1}"><i
-						class="fa-solid fa-caret-right"></i></a>
-				</div>
+			<c:set var="startPage" value="${currentPage - 2}" />
+			<c:set var="endPage" value="${currentPage + 2}" />
+			
+			<!-- 시작 페이지와 끝 페이지 조정 -->
+			<c:if test="${startPage < 1}">
+			    <c:set var="startPage" value="1" />
+			    <c:set var="endPage" value="5" />
+			</c:if>
+			
+			<c:if test="${endPage > totalPages}">
+			    <c:set var="endPage" value="${totalPages}" />
+			    <c:set var="startPage" value="${totalPages - 4}" />
+			</c:if>
+			
+			<!-- 페이지가 5개보다 적을 때 시작 페이지 조정 -->
+			<c:if test="${startPage < 1}">
+			    <c:set var="startPage" value="1" />
+			</c:if>
+			
+			<div class="pagination">
+			    <!-- 이전 버튼 -->
+			    <button class="prev <c:if test='${currentPage == 1}'>disabled</c:if>" data-page="${currentPage - 1}" onClick="goToPage(${currentPage - 1})">
+			        <i class="fa-solid fa-caret-left"></i>
+			    </button>
+			
+			    <!-- 페이지 번호 버튼 -->
+			    <c:forEach var="i" begin="${startPage}" end="${endPage}">
+			        <button class="page <c:if test='${i == currentPage}'> active</c:if>" onClick="goToPage(${i})" data-page="${i}">${i}</button>
+			    </c:forEach>
+			
+			    <!-- 다음 버튼 -->
+			    <button class="next <c:if test='${currentPage == totalPages}'>disabled</c:if>" data-page="${currentPage + 1}" onClick="goToPage(${currentPage + 1})">
+			        <i class="fa-solid fa-caret-right"></i>
+			    </button>
+			</div>
 			</nav>
 
 <!-- 		</div> -->

@@ -1,10 +1,13 @@
 @charset "UTF-8";
+*{
+	font-size: 1.0em;
+	font-family: 'myriad';
+	box-sizing: border-box;
+}
 body {
-    font-family: 'Arial', sans-serif;
     background-color: #f7f4ef;
     margin: 0;
     padding: 0;
-   /*  color: #7b6e48; */
 }
 #wrap{
     position: relative;
@@ -16,9 +19,7 @@ footer {
     bottom: 0px;
     position:absolute;  
 }
-/* section{
-    padding-bottom: 110px;
-} */
+
 p {
     margin-left:10px;
     margin-bottom: 5%;
@@ -33,16 +34,7 @@ table{
 .board{
     margin-bottom:20px;
 }
-.inner{
-    font-family: 'Arial', sans-serif;
-    background-color: #000000;
-    width:100%;
-    margin: 0;
-    padding: 10px;
-    color: #ffffff;
-    margin: 0 auto;
-    position:absolute;   
-}
+
 .container {
     padding: 20px;
     width: 80%;
@@ -62,20 +54,20 @@ table{
 .horizontal_box {
     
     padding-right:32%;
-    padding-left:32%;
+    padding-left:28%;
     /* flex-direction: column; */
     row-gap: 10px;
 }
 .horizontal_box label {
     display: block;
     padding: 0 10px 0 10px;
-    color: #7b6e48;
-    width:150px;
+    color: #7e7b46;
+    width: 180px;
 }
 .horizontal_box input {
     width: 97%;
     padding: 10px;
-    color: #7b6e48;
+    color: #7e7b46;
     background-color: #e9e5e0;
     border-style:none;
     border-radius: 5px;
@@ -85,21 +77,18 @@ table{
     flex-direction: row;
 }
 label{
-    /* width: 135px; */
-    color: #7b6e48;
+    color: #7e7b46;
 }
-.left, .right {
-    width:50%;
-    display:inline-block;
-}
+
 h1 {
     text-align: center;
-    color: #7b6e48;
+    color: #7e7b46;
+    font-size: 2.8em;
 }
 h4 {
     display: block;
     margin-top: 10px;
-    color: #7b6e48;
+    color: #7e7b46;
 }
 input, textarea {
     display: inline-black;
@@ -124,52 +113,36 @@ input, textarea {
 }
 .zipcode button {
     padding: 10px;
-    /* width: 200px; */
-    background-color: #a9a27e;
+    width: 150px;
+    background-color: #7e7b46;
     color: white;
     border: none;
-    border-radius: 20px;
+    border-radius: 25px;
     cursor: pointer;
-    margin-left: auto;
+    margin-left: 10px;
+    position: absolute;
+    /* right: 33%; */
 }
 .submit-btn {
     display: block;
     
-    width: 15%;
+    width: 200px;
+    height: 40px;
     margin: 2% auto;
-    padding: 1%;
-    background-color: #a9a27e;
+    background-color: #7e7b46;
     color: white;
     border: none;
-    border-radius: 20px;
+    border-radius: 25px;
     cursor: pointer;
     
 } 
-/* .search-box {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #e9e5e0;
-} */
-/* .search-box i {
-    color: #888;
-    margin-left: 10px;
-} */
-/* .search-box input {
-    border: none;
-    outline: none;
-    width: 100%;
-    background-color: transparent;
-    font-size: 16px;
-} */
+
 .box_rowContents button{
     /* right: 630px;
     position: absolute; */
     padding: 1%;
     /* width: 175px; */
-    background-color: #a9a27e;
+    background-color: #7e7b46;
     color: white;
     border: none;
     border-radius: 20px;
@@ -178,43 +151,19 @@ input, textarea {
     text-align: center;
     align-items: center;
     display: flex;
-    width: 7%;
-    height: 3%;
+    width: 150px;
+    height: 40px;
     justify-content: center;
     white-space: nowrap;
-    
+    position: absolute;
+    right: 25%;
 } 
-.search-box input::placeholder {
-    color: #aaa;
+
+button:hover{
+	background-color: #a09d67;
+    transition: background-color 0.3s ease;
 }
-select{
-    
-    float:right;
-    width:100%;
-}
-.fa-solid fa-magnifying-glass{
-    float:left;
-}
-select {
-    float: right;
-    width: 10%;
-}
-.moveTopBtn {
-    align:center;
-    text-align: center;
-    width: 20%;
-   padding: 10px; 
-    background-color: #a9a27e;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    margin: 0 auto; 
-     cursor: pointer;
-}
-.moveCS{
-    margin: 0 auto;
-    text-align: center;
-}
+
 html {
     margin: 0;
     padding: 0;

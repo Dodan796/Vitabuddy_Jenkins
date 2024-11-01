@@ -4,6 +4,8 @@
 	margin: 0 auto;
 	font-family: myriad;
 	box-sizing: border-box;	
+	font-size: 1.0em;
+	color: #583b1f;
 }
 
 #wrap {
@@ -46,7 +48,7 @@ a { text-decoration: none; }
 }
 
 section h3 {
-	font-size: 35px;
+	font-size: 2.8em;
 	color: #583b1f;
 	margin-top: 40px;
 	margin-bottom: 15px;
@@ -59,7 +61,7 @@ section p {
 }
 
 .btn {
-	max-width: 150px;
+	width: 200px;
 	height: 40px;
 	display: flex;
 	justify-content: center;
@@ -76,7 +78,6 @@ section p {
 }
 
 .btnFilled {
-	width: 150px;
 	background-color: #583b1f;
 	color: #e5e0da;
 }
@@ -91,14 +92,12 @@ section p {
 /* 버튼 hover 효과 */
 .btnFilled:hover {
 	background-color: #71543d;
-	font-weight: 900;
 	transition: background-color 0.3s ease;
 }
 
 .btnUnfilled:hover {
 	background-color: #71543d;
 	color: white;
-	font-weight: 900;
 	border: solid 1.5px #583b1f;
 	transition: background-color 0.3s ease;
 }

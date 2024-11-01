@@ -14,19 +14,23 @@
     <link rel="stylesheet" type="text/css" href="<c:url value='/css/wishList.css'/>">
 </head>
 <body>
-    <c:import url="/WEB-INF/views/layout/top.jsp" /> 
-    <section id="wrap">        		
-        <div class="container">
-            <h1>찜 목록</h1>
-            <div class="supplementList">
-                <table class="wishList">
-                    <colgroup> 
-                        <col width="50">
-                        <col width="170">
-                        <col width="*">
-                        <col width="143">
-                    </colgroup>	
-                    <tbody class="listBody">
+    <div id="wrap">
+        <!-- top -->
+        <c:import url="/WEB-INF/views/layout/top.jsp" />
+        <section>        
+            <div class="wishContainer">
+                <h1>찜목록</h1>
+
+                    <table class="wishItems">
+                        <thead>
+                            <tr>
+                                <th class="wishNo">번호</th>
+                                <th colspan="2">상품 정보</th>
+                                <th class="supPrice" colspan="2">가격</th>
+                            </tr>
+                        </thead>
+                        <!-- 장바구니가 빈 경우 -->
+                    	<tbody class="listBody">
 					    <c:choose>
 					        <c:when test="${not empty wishList}">
 					            <c:forEach var="wishList" items="${wishList}" varStatus="status">
@@ -38,10 +42,11 @@
 					                        </a>
 					                    </td>
 					                    <td class="supDetail">
-					                        <p>상품명: ${wishList.supName}</p>
-					                        <p>브랜드: ${wishList.supBrand}</p>
-					                        <p>가격: ₩<fmt:formatNumber value="${wishList.supPrice}" pattern="#,###" /></p>
+					                        <p>${wishList.supName}</p>
+					                        <br><br>
+					                        <p>${wishList.supBrand}</p>
 					                    </td>
+					                    <td class="supPrice"><p>가격: ₩<fmt:formatNumber value="${wishList.supPrice}" pattern="#,###" /></p></td>
 					                    <td class="status">
 					                        <div class="plusCartBtn" type="button" data-sup-id="${wishList.supId}" data-user-id="${sessionScope.sid}">
 					                            <i class="fa-solid fa-cart-plus" value="장바구니에 담기"></i>
@@ -61,10 +66,10 @@
 					        </c:otherwise>  
 					    </c:choose>
 					</tbody>
-                </table>
-            </div>
-        </div>
-    </section>
-    <c:import url="/WEB-INF/views/layout/footer.jsp" /> 
+                    </table>
+                    
+        <!-- footer -->
+        <c:import url="/WEB-INF/views/layout/footer.jsp" />
+    </div>
 </body>
 </html>

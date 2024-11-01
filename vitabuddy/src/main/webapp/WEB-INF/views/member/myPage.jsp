@@ -34,7 +34,7 @@
 
                 <div class="box_rowContents">
                     <div class="horizontal_box">
-                        <p>추천 성분</p>
+						<p>추천 성분</p>
                         <div class="recommend">
                             <div class="recommendList">
                                 <c:forEach var="entry" items="${allRecommendLists}">
@@ -44,13 +44,22 @@
                                             <c:forEach var="recommendVO" items="${entry.value}">
                                                 <b>추천 성분</b>: ${recommendVO.ingredients} <br>
                                                 <b>영양제 궁합</b>: ${recommendVO.interactionRecommend} <br>
-
+                                                
+                                                
+                                                <%-- <c:if test="${topProductsByIngredient[recommendVO.ingredientId] != null}">
+                                        <a href="/supplement/supplementDetail/${topProductsByIngredient[recommendVO.ingredientId].supId}">
+                                            ${topProductsByIngredient[recommendVO.ingredientId].supName}
+                                        </a>
+                                    </c:if> --%>
                                                 <!-- 추천 성분에 따른 상위 제품 링크 추가 -->
-												<c:if test="${topProductsByIngredient[recommendVO.ingredientId] != null}">
-												    <a href="/supplement/supplementDetail/${topProductsByIngredient[recommendVO.ingredientId].supId}">
-												        ${topProductsByIngredient[recommendVO.ingredientId].supName}
-												    </a>
-												</c:if>
+                                    <c:if test="${topProductsByIngredient != null}">
+                                    
+                                    <c:forEach var="topPrd" items="${topProductsByIngredient}">
+                                       <a href="<c:url value='/api/supplement/supplementDetail/${topPrd.value.supId}'/>">
+                                         ${topPrd.value.supName}
+                                         </a>
+                                    </c:forEach>
+                                    </c:if>
                                                 <br><br>
                                             </c:forEach>
                                         </c:when>

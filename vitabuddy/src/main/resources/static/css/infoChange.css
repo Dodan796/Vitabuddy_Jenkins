@@ -2,10 +2,11 @@
 *{
 	/* 옆에 여백 없앰 */
     box-sizing: border-box;	
+    font-family: 'myriad';
+    font-size: 1.0em;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
     background-color: #f7f4ef;
     margin: 0;
     padding: 0;
@@ -168,11 +169,7 @@ input, textarea {
 
 .zipcode button {
   	padding: 10px;
-/*   너비 수정	width: 200px; */
-	width: 20%;
-	min-width: 150px;
-	max-width: 200px;
-/* 색상수정 */
+	width: 150px;
     background-color: #7e7b46;
     color: white;
     border: none;
@@ -207,7 +204,6 @@ input, textarea {
 }
 
 .search-box i {
-	color: #888;
     margin-left: 10px;
 }
 
@@ -226,7 +222,7 @@ input, textarea {
     color: #aaa;
 }
 /* 전체 수정 */
-select{
+.search-box select{
 	background : transparent;
 	border: none;
 	color: #7e7b46;
@@ -234,33 +230,8 @@ select{
 	float:right;
 	width:45%;
 }
-/* 제거 */
-/* .fa-solid fa-magnifying-glass{
-	float:left;
-} */
-select {
-    float: right;
-    /* 중복 제거 */
-/*     width: 10%; */
-}
 
-.moveTopBtn {
-	align:center;
-	text-align: center;
-	width: 20%;
-   padding: 10px; 
-   /* 색상 수정 */
-    background-color: #7e7b46;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    margin: 0 auto; 
-     cursor: pointer;
-}
-.moveCS{
-	margin: 0 auto;
-	text-align: center;
-}
+
 html {
 	margin: 0;
 	padding: 0;
@@ -275,14 +246,18 @@ html {
 /* 추가 */
 
 button {
-    background-color: transparent; 
+    background-color: #7e7b46; 
     color: #7e7b46; 
-    border: 1px solid #7e7b46; 
-    border-radius: 5px; 
+    border-radius: 25px; 
     padding: 3px;
     cursor: pointer; 
-    font-size: 14px; 
     margin-left: 10px; 
+    
+}
+
+button:hover{
+	background-color: #a09d67;
+    transition: background-color 0.3s ease;
 }
 
 .search-box button{
@@ -314,15 +289,21 @@ li {
     padding-left: 10px; /* 기호와 텍스트 사이의 거리 */
 }
 
-#supplementList button:hover,
-#currentSupplementList button:hover {
+#supplementList button,
+#currentSupplementList button {
     background-color: #7e7b46; 
     color: #fff; 
-    border: 1px solid #7e7b46; 
-    border-radius: 5px; 
-    font-size: 14px; 
+    border-radius: 5px;  
     margin-left: 10px; 
-}
+    border: none;
+    font-size: 0.9em;
+} 
+
+#supplementList button:hover,
+#currentSupplementList button:hover {
+    background-color: #a09d67;
+    transition: background-color 0.3s ease;
+} 
 
 li::marker {
     font-size: 1em;

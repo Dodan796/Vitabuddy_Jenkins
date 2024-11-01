@@ -37,7 +37,7 @@
         			<c:forEach var="cartList" items="${cartLists}">
 	        			<tr>
 	        				<td>${index}</td>  <!--  수정사항 2 : set 해놓은 index 변수로 사용 -->
-	        				<td class="supImg"><img class="supImg" src="data:image/png;base64,${cartList.base64SupImg}"></td>
+	        				<td class="supImgTd"><img class="supImg" src="data:image/png;base64,${cartList.base64SupImg}"></td>
 	        				<td class="supName">${cartList.supName}
 	        					<input type="hidden" name="supId" value="${cartList.supId}"></td> <!-- el표현식 작성함, supId가 서버로 전송되어야 하므로 input에 hidden 처리   -->
 	        				<td>${cartList.cartQty}
@@ -45,16 +45,16 @@
 	        				<td><span class="price">
 	        						<c:set var="amount" value="${cartList.supPrice * cartList.cartQty}"/> <!-- 추가 수정 : foreach 반복문이고, cartList에는 수량과 단가가 모두 들어가있으므로 단순 곱셈 대체 + 이 상품별 금액을 amount에 저장 -->
 			               			<c:set var="sum" value="${sum + amount}"/>  <!-- sum 변수 선언하고, 반복돌면서 amount누적으로 더해진다 -> sum은 반복문 밖에서 출력할 예정 -->
-			               			<fmt:formatNumber value="${amount}" pattern="#,###" />  <!-- 수정 : amount 로 출력 -->
-                                </span> 원</td>
+			               			₩ <fmt:formatNumber value="${amount}" pattern="#,###" />  <!-- 수정 : amount 로 출력 -->
+                                </span><!--  원 --></td>
 	        			</tr>
 	        			<c:set var="index" value="${index + 1}"/> <!-- 수정사항 3 : 반복할 때마다 index 변수 1 증가 -->
         			</c:forEach>
         			<tr>
-        				<td colspan="4" align="right">총 금액 :</td>
+        				<td colspan="4" align="right">총 금액 : ₩ </td>
         				<td><span class="price">
                               <fmt:formatNumber value="${sum}" pattern="#,###" />  <!-- 추가 수정: totalPrice에서 반복문 안쪽에서 선언한 sum으로 변경 -->
-                            </span> 원</td>
+                            </span><!--  원 --></td>
         			</tr>
         		</table>
         	</section>

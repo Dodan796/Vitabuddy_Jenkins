@@ -1,11 +1,13 @@
 @charset "UTF-8";
 
 *{
-	background: #e5e0da;
 	margin:0 auto;
 	font-family:myriad;
+	font-size: 1.0em;
 	text-align:left;
 	position:relative; 
+	vertical-align: center;
+	color: #583b1f;
 }
 .reviewCorrect {
     padding: 20px;
@@ -13,12 +15,14 @@
     margin: 20px auto;
     width: 80%;
     box-sizing: border-box;
+    background: #e5e0da;
+    margin: auto;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 
 .reviewCorrect label {
 	float: left;
-    font-size: 16px;
     color: #583b1f;
     margin-bottom: 5px;
     display: inline-block;
@@ -32,22 +36,22 @@
     border: 1px solid #ddd;
     border-radius: 5px;
     margin-bottom: 15px;
-    background: #f7f4ef;
+    /* background: #f7f4ef; */
 }
 
 .reviewCorrect select {
-	width: 100px;
-    height: 30px;
+	width: 120px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    margin-bottom: 15px;
+    /* margin-bottom: 15px; */
     background: #f7f4ef;
+    padding: 5px;
 }
 
 .option {
     float: right;
     text-align: right; 
-    width: 400px;
+    width: 450px;
 }
 
 .option td label{
@@ -57,7 +61,6 @@
 
 .option select, .option input[type="date"] {
     display: inline-block;
-    font-size: 13px;
     margin: 10px;
     padding: 5px;
     background: #f7f4ef;
@@ -106,7 +109,6 @@
 /* 라벨 스타일 */
 .reviewCorrect  label {
     float: left;
-    font-size: 16px;
     color: #583b1f;
     margin-bottom: 5px;
     display: inline-block;
@@ -130,7 +132,6 @@
     height: 30px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    margin-bottom: 15px;
     background: #f7f4ef;
 }
 
@@ -154,13 +155,11 @@
 }
 
 .btn {
-  max-width: 150px;
+  width: 200px;
   height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 15px;
-  font-weight: 300;
   text-decoration: none;
   text-align: center;
   cursor: pointer;
@@ -171,7 +170,6 @@
 }
 
 .btnFilled{
-	width:150px;
 	background-color:#583b1f;
 	color:#e5e0da;
 	border:#583b1f;
@@ -181,6 +179,5 @@
 /* 버튼 hover */
 .btnFilled:hover {
     background-color: #71543d;
-    font-weight: 900;
     transition: background-color 0.3s ease;
 }

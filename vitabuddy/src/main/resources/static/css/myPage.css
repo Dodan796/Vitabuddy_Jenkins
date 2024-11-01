@@ -3,6 +3,7 @@
 * {
     /* 옆에 여백 없앰 */
     box-sizing: border-box;
+    font-size: 1.0em;
 }
 
 body {
@@ -20,7 +21,7 @@ body {
 
 p {
     margin-left: 10px;
-    font-size: 1.5em;
+    font-size: 1.2em;
 }
 
 table {
@@ -150,18 +151,22 @@ h4 {
 .submit-btn {
     display: block;
     width: 30%;
-    max-width: 250px;
+    max-width: 200px;
     margin: 20px auto;
     padding: 10px;
     background-color: #7e7b46;
     color: white;
     border: none;
-    border-radius: 30px;
+    border-radius: 25px;
     cursor: pointer;
-    font-size: 1.2em;
 }
 
-select {
+.submit-btn:hover{
+	background-color: #a09d67;
+    transition: background-color 0.3s ease;
+}
+
+.review-section select {
     float: right;
     width: 10%;
     min-height: 20px;
@@ -213,16 +218,6 @@ li{
     padding-right: 3%;
     font-size: 1em;
 }
-
-
-/* .purchase-section table{
-	margin-top: 10px;
-}
-
-.review-section table{
-	margin-top: 10px;
-}
- */
 
 /*10/29 시간 체크박스 테스트 코드*/
 

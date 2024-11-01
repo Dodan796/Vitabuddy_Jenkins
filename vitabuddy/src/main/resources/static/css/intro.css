@@ -4,6 +4,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'myriad';
+    font-size: 1.0em;
 }
 
 #wrap {
@@ -21,8 +22,6 @@ a{
 
 /* 버튼 태그 기본 css 제거 */
 button{
-	max-width: 150px;
-	font-family: inherit;
 	cursor: pointer;
 	text-decoration: none;
 	border: none;
@@ -73,7 +72,6 @@ section div {
 label {
     display: block;
     text-align: left; 
-    margin-bottom: 5px; 
 }
 
 /* input 필드 중앙 정렬 */
@@ -83,8 +81,8 @@ label {
     width: 100%; 
     max-width: 600px; 
     padding: 10px;
+    padding-left: 20px;
     border-radius: 30px;
-    font-size: 15px;
     border: none;
     line-height: 30px;
     color: #583b1f;
@@ -105,9 +103,8 @@ label {
 
 /* 로그인 버튼 중앙 정렬 */
 .loginForm #loginSubmit {
-    width: 100px;
+    width: 150px;
     height: 40px;
-    padding: 10px;
     display: block;
     float: right;
 }
@@ -115,16 +112,13 @@ label {
 
 .btn {
     margin-top: 10px;
-    max-width: 150px;
+	width: 200px;
     height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 15px;
-    font-weight: 300;
     cursor: pointer;
     border-radius: 25px;
-    margin-bottom: 20px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -135,12 +129,6 @@ label {
     color: #e5e0da;
 }
 
-
-.btnUnfilled {
-    background-color: #e5e0da;
-    color: #583b1f;
-    border: solid 1.5px #583b1f;
-}
 
 /* 버튼 hover */
 .btnFilled:hover {
@@ -167,6 +155,5 @@ section {/* 섹션 화면 우측 이동 */
     left: 30%; /* 화면의 30%에서 시작 */
     text-align: center; 
 }
-
 
 

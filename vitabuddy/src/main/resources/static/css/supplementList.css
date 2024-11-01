@@ -5,6 +5,8 @@
 	font-family:myriad;
 		/* 옆에 여백 없앰 */
     box-sizing: border-box;	
+    font-size: 1.0em;
+    color: #583b1f;
 
 } 
 
@@ -34,20 +36,12 @@ a{
 h1{
 	margin-top:5px;
 	margin-bottom: 20px;
-	font-size:50px;
+	font-size:4.0em;
 	font-weight: 900;
 	color:#7e7b46;
 	text-align: left;
 	margin-left:30px;
 }
-
-/* 중복되는 코드 제거
-#wrap {
-    background-color: #e5e0da;
-    text-align: center;
-    position: relative;
-    min-height: 100vh; 상품과 페이지네이션 사이 거리가 너무 멀어짐
-} */
 
 .search {
     display: flex;
@@ -195,6 +189,12 @@ h1{
     color: #583b1f;
 }
 
+/* 카테고리 선택시 밑줄 */
+#category a.active {
+    text-decoration: underline;
+
+}
+
 /* 하위 카테고리 */
 #subCtg {
     margin-top: 20px;
@@ -224,6 +224,10 @@ h1{
 .subCtgMenu li a {
     text-decoration: none;
     color: #583b1f;
+}
+
+.subCtgMenu li a:hover {
+    text-decoration: underline;
 }
 
 

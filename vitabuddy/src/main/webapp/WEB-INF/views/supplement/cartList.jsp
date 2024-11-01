@@ -52,9 +52,9 @@
                                             </td>              
                                             <td class="supDetail">${cartList.supName}</td>
                                             <td>
-                                                <span class="price" data-price="${cartList.supPrice}">
+                                                ₩ <span class="price" data-price="${cartList.supPrice}">
                                                     <fmt:formatNumber value="${cartList.supPrice}" pattern="#,###" />
-                                                </span> 원
+                                                </span>
                                             </td>
                                             <td>수량 : 
                                                 <input type="button" class="minusBtn" value="-"> 
@@ -75,7 +75,7 @@
                                         </tr>
                                         <tr>
                                             <td></td><td></td>
-                                            <td><span class="amount"><fmt:formatNumber value="${cartList.supPrice}" pattern="#,###" /></span> 원</td>
+                                            <td>₩ <span class="amount"><fmt:formatNumber value="${cartList.supPrice}" pattern="#,###" /></span></td>
                                         </tr>
                                     </tbody>
                                   </c:forEach>
@@ -87,9 +87,9 @@
                     <div class="totalResult">
                         주문 내역
                         <br>
-                        상품 총액: <span id="total">
+                        상품 총액: ₩ <span id="total">
                             <!-- 총 구매 예정 금액 표시 -->
-                            <fmt:formatNumber value="${sum}" pattern="#,###"/></span> 원
+                            <fmt:formatNumber value="${sum}" pattern="#,###"/></span>
                         <br>
                         <!-- 결제하기 버튼 -->
                         <input type="submit" value="결제하기" class="btn btnFilled">
