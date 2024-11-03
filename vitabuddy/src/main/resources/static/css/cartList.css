@@ -3,6 +3,9 @@
 * {
     margin: 0 auto;
     font-family: 'myriad';
+    box-sizing: border-box;	
+    font-size: 1.0em;
+    color: #583b1f;
 }
 
 #wrap {
@@ -35,7 +38,7 @@ a {
 h1 {
     margin-top: 30px;
     color: #7e7b46;
-    font-size: 40px;
+    font-size: 2.8em;
     margin-bottom: 30px;
 }
 
@@ -57,7 +60,7 @@ h1 {
 .supImg {
     width: 150px;
     height: 150px;
-    border: 1px solid #7e7b46;
+    border: 0.1em solid #7e7b46;
 }
 
 /* 삭제 버튼 */
@@ -73,8 +76,8 @@ h1 {
     font-size: 1.5em;
 }
 
-.deleteCartBtn:hover {
-    color: #d32f2f;
+.fa-trash:hover {
+    color: #71543d; 
 }
 
 /* 수량 선택 */
@@ -117,12 +120,10 @@ h1 {
 }
 
 .btn {
-    max-width: 150px;
+    width: 200px;
     height: 40px;
     justify-content: center;
     align-items: center;
-    font-size: 15px;
-    font-weight: 300;
     text-decoration: none;
     text-align: center;
     cursor: pointer;
@@ -133,7 +134,6 @@ h1 {
 }
 
 .btnFilled {
-    width: 150px;
     background-color: #583b1f;
     color: #e5e0da;
 }

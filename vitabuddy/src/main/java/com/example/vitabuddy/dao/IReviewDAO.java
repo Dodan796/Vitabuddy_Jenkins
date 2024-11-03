@@ -40,5 +40,4 @@ public interface IReviewDAO {
 	// 특정 성분에 대해 상위 1개의 상품 조회 메서드
 	SupplementStoreVO getTopProductByIngredient(String ingredientId);
 
-
 }

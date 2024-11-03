@@ -187,18 +187,21 @@ public class ReviewController {
 	                                 Model model) {
 
 	    ReviewVO review = reviewService.getReviewByNo(reviewNo);
-	    if (review == null) {
-	        throw new IllegalArgumentException("해당 리뷰를 찾을 수 없습니다. reviewNo: " + reviewNo);
-	    }
+		/*
+		 * if (review == null) { throw new
+		 * IllegalArgumentException("해당 리뷰를 찾을 수 없습니다. reviewNo: " + reviewNo); }
+		 */
 
 	    SupplementDetailVO sup = supplementDetailService.getSupplementDetailById(supId);
-	    if (sup == null) {
-	        throw new IllegalArgumentException("해당 보충제를 찾을 수 없습니다. supId: " + supId);
-	    }
+		/*
+		 * if (sup == null) { throw new
+		 * IllegalArgumentException("해당 보충제를 찾을 수 없습니다. supId: " + supId); }
+		 */
 
 	    model.addAttribute("review", review);
 	    model.addAttribute("sup", sup);
 
 	    return "supplement/editReview";
 	}
+	
 }

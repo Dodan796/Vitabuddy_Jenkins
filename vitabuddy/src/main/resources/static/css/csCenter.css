@@ -1,12 +1,6 @@
 @charset "UTF-8";
-*{
-	/* 옆에 여백 없앰 */
-    box-sizing: border-box;	
-    font-family: 'myriad';
-    font-size: 1.0em;
-}
-
 body {
+    font-family: 'Arial', sans-serif;
     background-color: #f7f4ef;
     margin: 0;
     padding: 0;
@@ -59,8 +53,7 @@ table{
     border-radius: 10px;
     background-color: #e5e0da;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    /* 색상수정 */
-    color: #7e7b46;
+    color: #7b6e48;
 }
 
 .horizontal_box .name{
@@ -69,10 +62,7 @@ table{
 .temp {
 	display: flex;
 	flex-direction: row;
-	/* 가로 배열 */
-	justify-content: space-between;
-	flex-wrap: nowrap;
-	/* 가로 배열 */
+	justify-content: center;
 	column-gap: 40px;
 	margin-left: 20px;
 	margin-right: 20px;
@@ -85,54 +75,38 @@ table{
 .horizontal_box label {
     display: block;
     padding: 0 10px 0 10px;
-    /* 색상 변경 */
-    color: #7e7b46;
+    color: #7b6e48;
 }
 .horizontal_box input {
     width: 97%;
     padding: 10px;
-    /* 색상 수정 */
-    color: #7e7b46;
+    color: #7b6e48;
     background-color: #e9e5e0;
     border-style:none;
     border-radius: 5px;
 }
 
 .box_rowContents {
-	 display: flex; 
+	/* display: flex; */
 	flex-direction: row;
 }
 label{
-	/* 색상 수정 */
-	color: #7e7b46;
+	color: #7b6e48;
 }
 .left, .right {
-	/* 너비 수정 */
-	width:48%;
-    display:inline-block; 
-    /* 추가 */
-	min-width: 300px;
-}
-
-/* 버튼을 가운데 정렬 */
-.button-container {
-    display: flex;
-    justify-content: center; /* 가로로 가운데 정렬 */
-    width: 100%;
+	width:50%;
+	display:inline-block;
 }
 
 h1 {
     text-align: center;
-    /* 색상 수정 */
-    color: #7e7b46;
-    font-size: 2.25em;
+    color: #7b6e48;
 }
 
 h4 {
     display: block;
     margin-top: 10px;
-    /* 색상 수정 */
-    color: #7e7b46;
+    color: #7b6e48;
 }
 
 input, textarea {
@@ -142,11 +116,6 @@ input, textarea {
     background-color: #e9e5e0;
     border-style:none;
     border-radius: 5px;
-}
-
-/* 우편번호 너비 수정 */
-.box_rowContents input{
-	width: 30%;
 }
 
 .phone-number {
@@ -170,13 +139,13 @@ input, textarea {
 
 .zipcode button {
   	padding: 10px;
-	width: 150px;
-    background-color: #7e7b46;
+  	width: 200px;
+    background-color: #a9a27e;
     color: white;
     border: none;
     border-radius: 20px;
     cursor: pointer;
-/*  제거 margin-left: auto; */
+    margin-left: auto;
 }
 
 .submit-btn {
@@ -185,8 +154,7 @@ input, textarea {
     width: 200px;
     margin: 20px auto;
     padding: 10px;
-    /* 색상 수정 */
-    background-color: #7e7b46;
+    background-color: #a9a27e;
     color: white;
     border: none;
     border-radius: 20px;
@@ -200,39 +168,52 @@ input, textarea {
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #e9e5e0;
-    /* padding 추가 */
-    padding: 5px;
 }
-
 .search-box i {
+    color: #888;
     margin-left: 10px;
 }
 
 .search-box input {
     border: none;
     outline: none;
-    /* 너비, 배경색 수정, padding 추가*/
-    width: 70%;
-    background-color: #e9e5e0;
-    padding: 5px;
-    
+    width: 100%;
+    background-color: transparent;
     font-size: 16px;
 }
 
 .search-box input::placeholder {
     color: #aaa;
 }
-/* 전체 수정 */
-.search-box select{
-	background : transparent;
-	border: none;
-	color: #7e7b46;
-	font-size : 1.0em;
+select{
+	
 	float:right;
-	width:45%;
+	width:100%;
+}
+.fa-solid fa-magnifying-glass{
+	float:left;
+}
+select {
+    float: right;
+    width: 10%;
 }
 
-
+.moveTopBtn {
+	align:center;
+	text-align: center;
+	width: 20%;
+   padding: 10px; 
+    background-color: #a9a27e;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    margin: 0 auto; 
+     cursor: pointer;
+}
+.moveCS{
+	margin: 0 auto;
+	text-align: center;
+}
 html {
 	margin: 0;
 	padding: 0;
@@ -242,71 +223,4 @@ html {
 	html{
 		scroll-behavior: auto;
 	}
-}
-
-/* 추가 */
-
-button {
-    background-color: #7e7b46; 
-    color: #7e7b46; 
-    border-radius: 25px; 
-    padding: 3px;
-    cursor: pointer; 
-    margin-left: 10px; 
-    
-}
-
-button:hover{
-	background-color: #a09d67;
-    transition: background-color 0.3s ease;
-}
-
-.search-box button{
-	margin-top: 0;
-	margin-left: 5px;
-	margin-right: 5px;
-	border: none;
-	background: transparent;
-}
-
-#currentSupplementList{
-	height: 350px; /* div의 높이- %로 설정시 추가 할때 마다 길이 늘어남*/
-    overflow-y: auto; /* 스크롤 설정 */
-} 
-
-#supplementList{
-	margin-top: 10px;
-    height: 350px; /* div의 높이 */
-    overflow-y: auto; /* 스크롤 설정 */
-    margin-bottom: 10px;
-    padding-left: 16px;
-}
-
-.supList{
-	margin-top: 20px;
-}
-
-li {
-    padding-left: 10px; /* 기호와 텍스트 사이의 거리 */
-    margin-top: 2px;
-}
-
-#supplementList button,
-#currentSupplementList button {
-    background-color: #7e7b46; 
-    color: #fff; 
-    border-radius: 5px;  
-    margin-left: 10px; 
-    border: none;
-    font-size: 0.9em;
-} 
-
-#supplementList button:hover,
-#currentSupplementList button:hover {
-    background-color: #a09d67;
-    transition: background-color 0.3s ease;
-} 
-
-li::marker {
-    font-size: 1em;
 }

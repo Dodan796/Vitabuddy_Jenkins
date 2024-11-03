@@ -27,18 +27,7 @@ public class HomeController {
         List<SupplementStoreVO> topSupplementsByBrand = reviewService.getTopSupplementsByBrand();
         List<SupplementStoreVO> topSupplementsByFunction = reviewService.getTopSupplementsByFunction();
         List<SupplementStoreVO> topSupplementsByIngredient = reviewService.getTopSupplementsByIngredient();
-
-        /*for (SupplementStoreVO supplement : topSupplementsByBrand) {
-            if (supplement.getSupImg() != null) {
-                // 이미지 데이터를 Base64로 인코딩
-                String base64Image = Base64.getEncoder().encodeToString(supplement.getSupImg());
-                supplement.setBase64SupImg(base64Image);
-            } else {
-                // 이미지가 없을 경우 로그로 확인
-                System.out.println("No image found for SupID " + supplement.getSupId());
-            }
-        }*/
-
+       
         // 모델에 담아 JSP로 전달
         model.addAttribute("topSupplementsBrand", topSupplementsByBrand);
         model.addAttribute("topSupplementsFunction", topSupplementsByFunction);

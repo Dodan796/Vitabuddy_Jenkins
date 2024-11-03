@@ -59,7 +59,7 @@ $(document).ready(function () {
       if (!isLoggedIn) {
         $(this).blur(); // 현재 포커스 해제
         alert("리뷰 작성 시 로그인이 필요합니다.");
-        window.location.href = "/intro";
+        //window.location.href = "/intro";
       }
     }
   );

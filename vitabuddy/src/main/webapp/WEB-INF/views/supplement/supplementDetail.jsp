@@ -25,12 +25,12 @@
 		<div id="wrap">
 			<!-- top 메뉴 포함 -->
 			<c:import url="/WEB-INF/views/layout/top.jsp" />
-			
+
 				<!-- 로그인 여부 데이터 속성으로 설정 --> 
 				<c:set var="isLoggedIn" value="${not empty sessionScope.sid}" />
 				<!-- 로그인 여부 저장 -->
 				<div id="loginStatus" data-login="${isLoggedIn}"></div>
-				
+
 			<!-- 상품 프로필 -->
 			<section class="prdProfile">
 				<!-- 공백 삭제 <br><br> -->
@@ -61,7 +61,7 @@
 
 					<!-- 찜목록 및 장바구니 추가 -->
 					<tr>
-					
+
 					<!-- 찜목록, 장바구니 추가 버튼에 data 속성 추가 -->
 						<td colspan="2">
 							<a href="#" id="addWish" data-sup-id="${supplementDetail.supId}" data-user-id="${sessionScope.sid}">찜목록 추가</a>
@@ -110,9 +110,9 @@
 				</tr>
 				</table>
 			</section>
-			
+
 			<br>
-			
+
 			<!-- 상품 상세 정보 -->
 			<section class="prdInfo">
 				<h2>상품 상세 정보</h2>
@@ -122,19 +122,19 @@
 						<h3>상품설명</h3>
 						<p>${supplementDetail.supDetail}</p>
 					</div>
-					
+
 					<!-- 복용법 -->
 					<div>
 						<h3>복용법</h3>
 						<p>${supplementDetail.supDosage}</p>
 					</div>
-					
+
 					<!-- 주의사항 -->
 					<div>
 						<h3>주의사항</h3>
 						<p>${supplementDetail.supPrecautions}</p>
 					</div>
-					
+
 					<!-- 영양 정보 -->
 					<div>
 						<h3 id="toggleNutrition" class="clickable">영양정보 <span class="arrow"><i class="fa-solid fa-caret-down"></i></span></h3>
@@ -148,9 +148,9 @@
 						</div>
 					</div>
 				</div>
-				
+
 			</section>
-			
+
 				<!-- 리뷰작성 -->
 				<!-- div를 section으로 변경 1018 -->
 		<section class="reviewWrite">
@@ -313,11 +313,11 @@
 					<!-- 기간 및 해시태그 -->
 					<tr class="supInfo">
 					<!-- 테이블 구조 수정 colspan 3 >2 -->
-						<td colspan="2"></td>
+						<td></td>
 						<!-- 복용기간 칸 합침 -->
 						<td colspan="3">복용기간: 
 						<fmt:formatDate value="${review.startDate}" pattern="yyyy-MM-dd" /> ~ <fmt:formatDate value="${review.endDate}" pattern="yyyy-MM-dd" /></td>
-						<td>해시태그: ${review.reviewHashtag}</td>
+						<td colspan="2">해시태그: ${review.reviewHashtag}</td>
 						<td>
 							<div class="rate">
 								<c:forEach var="i" begin="1" end="5">
@@ -375,10 +375,9 @@
 			</nav>
 
 <!-- 		</div> -->
-			
-			
+
+
 			<!-- footer 포함 -->
 			<c:import url="/WEB-INF/views/layout/footer.jsp" /> 
 		</div>
 	</body>
-</html>

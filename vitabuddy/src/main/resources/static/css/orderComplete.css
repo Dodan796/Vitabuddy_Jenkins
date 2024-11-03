@@ -83,7 +83,7 @@ section p {
 }
 
 .btnUnfilled {
-	width: 150px;
+/* 	width: 150px; */
 	background-color: #e5e0da;
 	color: #583b1f;
 	border: solid 1.5px #583b1f;

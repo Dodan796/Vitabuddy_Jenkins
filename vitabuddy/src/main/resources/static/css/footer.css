@@ -1,9 +1,10 @@
 @charset "UTF-8";
 body {
-    font-family: 'Arial', sans-serif;
     background-color: #f7f4ef;
     margin: 0;
     padding: 0;
+    font-family: 'myriad';
+    font-size: 1.0em;
    /*  color: #7b6e48; */
 }
 #wrap{
@@ -19,7 +20,6 @@ footer {
 
 .inner{
 	display:flex;
-	font-family: 'Arial', sans-serif;
     background-color: #f7f4ef;
     width:100%;
     margin: 0;
@@ -31,17 +31,29 @@ footer {
 }
 
 .moveTopBtn {
-	align:center;
-	text-align: center;
-	width: 20%;
-   padding: 0.5%; 
+    display: flex; /* Flexbox 사용 */
+    justify-content: center; /* 수평 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    text-align: center;
+    width: 200px;
+    height: 40px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    border-radius: 25px;
     background-color: #7e7b46;
-    color: white;
+    color: #f7f4ef;
     border: none;
-    border-radius: 20px;
-    margin: 0 auto; 
-     cursor: pointer;
+    vertical-align: middle;
 }
+
+/* 버튼 hover */
+.moveTopBtn:hover {
+    background-color: #a09d67;
+    transition: background-color 0.3s ease;
+}
+
 
 html {
 	margin: 0;
