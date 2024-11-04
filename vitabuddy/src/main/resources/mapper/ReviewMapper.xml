@@ -183,5 +183,30 @@
         AND ROWNUM <= 1
         ]]>
     </select>
+    
+    <!-- 페이지별 리뷰 가져오기 -->
+	<select id="pagingReviewList" parameterType="map" resultType="com.example.vitabuddy.model.ReviewVO">
+	    <![CDATA[
+	        SELECT * FROM (
+	            SELECT ROWNUM AS rn, reviewTitle, userId, supId, rating, reviewHashtag, reviewDate, content, startDate, endDate, reviewImg
+	            FROM (
+	                SELECT reviewTitle, userId, supId, rating, reviewHashtag, reviewDate, content, startDate, endDate, reviewImg
+	                FROM Review
+	                WHERE supId = #{supId}
+	                ORDER BY reviewDate DESC
+	            )
+	            WHERE ROWNUM <= #{offset} + #{limit}
+	        )
+	        WHERE rn > #{offset}
+	    ]]>
+	</select>
+
+	
+	
+	<!-- 특정 제품의 리뷰 총 개수 조회 -->
+	<select id="countReviews" parameterType="int" resultType="int">
+	    SELECT COUNT(*) FROM review WHERE supId = #{supId}
+	</select>
+    
 	
 </mapper>
