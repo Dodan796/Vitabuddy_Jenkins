@@ -1,67 +1,175 @@
-@charset "UTF-8";
-body {
-    background-color: #f7f4ef;
-    margin: 0;
-    padding: 0;
-    font-family: 'myriad';
-    font-size: 1.0em;
-   /*  color: #7b6e48; */
-}
-#wrap{
-	position: relative;
-	width: 100%;
-	height: 100%;
-}
+/* The footer is fixed to the bottom of the page */
+
 footer {
-	width:100%;
-	bottom: 0px;
-	position:absolute;  
+  /*   position: fixed; */
+    bottom: 0;
 }
 
-.inner{
-	display:flex;
-    background-color: #f7f4ef;
-    width:100%;
-    margin: 0;
-    padding: 2%;;
+@media (max-height:800px) {
+    footer {
+        position: static;
+    }
+}
+
+.footer-distributed {
+    background-color: #583b1f;
+    box-sizing: border-box;
+    width: 100%;
+    text-align: left;
+    font: 15px sans-serif;
+    /* font-family: 'Arial', sans-serif; */
+    padding: 50px 50px 60px 50px;
+    margin-top: 80px;
+}
+
+
+.footer-distributed .footer-left, .footer-distributed .footer-center, .footer-distributed .footer-right {
+    display: inline-block;
+    vertical-align: top;
+}
+
+/* Footer left */
+
+.footer-distributed .footer-left {
+    width: 30%;
+}
+
+.footer-distributed h3 {
     color: #ffffff;
-    margin: 0 auto;
-    position:absolute;   
-    display:flex;
+    font: normal 36px 'Cookie', cursive;
+    margin: 0;
 }
 
-.moveTopBtn {
-    display: flex; /* Flexbox 사용 */
-    justify-content: center; /* 수평 중앙 정렬 */
-    align-items: center; /* 수직 중앙 정렬 */
+
+.footer-distributed h3 span {
+    color: #e0ac1c;
+}
+
+/* Footer links */
+
+.footer-distributed .footer-links {
+    color: #ffffff;
+    margin: 20px 0 12px;
+}
+
+.footer-distributed .footer-links a {
+    display: inline-block;
+    line-height: 1.8;
+    text-decoration: none;
+    color: inherit;
+}
+
+.footer-distributed .footer-company-name {
+    color: #8f9296;
+    font-size: 15px;
+    font-weight: normal;
+    margin: 0;
+}
+
+/* Footer Center */
+
+.footer-distributed .footer-center {
+    width: 35%;
+}
+
+.footer-distributed .footer-center i {
+    background-color: #33383b;
+    color: #ffffff;
+    font-size: 25px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
     text-align: center;
-    width: 200px;
-    height: 40px;
-    margin-top: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    cursor: pointer;
-    border-radius: 25px;
-    background-color: #7e7b46;
-    color: #f7f4ef;
-    border: none;
+    line-height: 42px;
+    margin: 10px 15px;
     vertical-align: middle;
 }
 
-/* 버튼 hover */
-.moveTopBtn:hover {
-    background-color: #a09d67;
-    transition: background-color 0.3s ease;
+.footer-distributed .footer-center i.fa-envelope {
+    font-size: 17px;
+    /* line-height: 38px; */
 }
 
+.footer-distributed .footer-center p {
+    display: inline-block;
+    color: #ffffff;
+    vertical-align: middle;
+    margin: 0;
+}
 
-html {
-	margin: 0;
-	padding: 0;
-	scroll-behavior: smooth;
+.footer-distributed .footer-center p span {
+    display: block;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 2;
 }
-@media (prefers-reduced-motion: reduce){
-	html{
-		scroll-behavior: auto;
-	}
+
+.footer-distributed .footer-center p a {
+    color: #e0ac1c;
+    text-decoration: none;
+    ;
 }
+
+/* Footer Right */
+
+.footer-distributed .footer-right {
+    width: 30%;
+}
+
+.footer-distributed .footer-company-about {
+    line-height: 20px;
+    color: #92999f;
+    font-size: 13px;
+    font-weight: normal;
+    margin: 0;
+}
+
+.footer-distributed .footer-company-about span {
+    display: block;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.footer-distributed .footer-icons {
+    margin-top: 25px;
+}
+
+.footer-distributed .footer-icons a {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    background-color: #33383b;  
+    border-radius: 2px;
+    font-size: 20px;
+    color: #000000;
+    text-align: center;
+    line-height: 35px;
+    margin-right: 3px;
+    margin-bottom: 5px;
+}
+
+.footer-distributed .footer-icons a:hover {
+    background-color: #3F71EA;
+}
+
+.footer-links a:hover {
+    color: #3F71EA;
+}
+
+@media (max-width: 880px) {
+    .footer-distributed .footer-left, .footer-distributed .footer-center, .footer-distributed .footer-right {
+        display: block;
+        width: 100%;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+    .footer-distributed .footer-center i {
+        margin-left: 0;
+    }
+}       
+        
+
+        
