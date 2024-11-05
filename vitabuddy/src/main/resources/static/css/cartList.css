@@ -5,7 +5,6 @@
     font-family: 'myriad';
     box-sizing: border-box;	
     font-size: 1.0em;
-    color: #583b1f;
 }
 
 #wrap {
@@ -14,6 +13,7 @@
     background-color: #e5e0da;
     text-align: center;
     position: relative;
+      color: #583b1f;
 }
 
 /* 모든 img 테두리 제거 */
