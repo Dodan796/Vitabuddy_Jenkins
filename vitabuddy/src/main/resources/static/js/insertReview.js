@@ -13,6 +13,9 @@ $(document).ready(function () {
     if (files.length > 3) {
       alert("사진은 최대 3장까지 업로드 가능합니다.");
       return;
+    } else if (files.length < 1){ //=> 최소 한장의 이미지 업로드를 위한 코드 추가 11.05 .
+    	alert("최소 1장의 사진을 업로드 하세요.");
+      return;
     }
 
     console.log("supId: ", "${supplementDetail.supId}");

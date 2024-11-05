@@ -14,7 +14,7 @@
 </head>
 <body>
     <c:import url="/WEB-INF/views/layout/top.jsp"/>
-    
+
     <section id="wrap"> <!-- div 에서 section으로 변경 -->
         <div class="container">
             <div class="headers"><!-- 헤더 따로 div 제공 -->
@@ -45,9 +45,11 @@
                     <input type="password" name="confirmPwd" id="confirmPwd" oninput="pwCheck()" required/><br>
                 </div>
                 <p id="pwOk"></p>
-                <div class="phone-number">
-                    <div class="box_rowContents">
+                
+                <div class="box_rowContents">
+                    
                         <label>전화번호</label>
+                        <div class="phone-number">
                         <input type="tel" name="userPh1" id="userPh1" placeholder="010" maxlength="3" required/>
                         <span>-</span>
                         <input type="tel" name="userPh2" id="userPh2" placeholder="1111" maxlength="4" required/>
@@ -87,6 +89,5 @@
         </div>
     </section>
 <c:import url="/WEB-INF/views/layout/footer.jsp"/>
-  
+
 </body>
-</html>

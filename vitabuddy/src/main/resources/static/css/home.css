@@ -6,7 +6,7 @@
     /* 옆에 여백 없앰 */
     box-sizing: border-box;	
     font-size: 1.0em;
-    
+
 }
 
 #wrap {
@@ -195,7 +195,7 @@ button{
 .pagination .prev,
 .pagination .next{
 	font-size: 1.5em;
-	
+
 }
 
 .pagination {
@@ -222,4 +222,3 @@ button{
     margin: 0 5px; 
     cursor: pointer;
 }
-

@@ -5,6 +5,8 @@
 	font-family:myriad;
 		/* 옆에 여백 없앰 */
     box-sizing: border-box;	
+    font-size: 1.0em;
+/*     color: #583b1f; */
 
 } 
 
@@ -33,7 +35,7 @@ a{
 
 h2{
 	color: #7e7b46;
-	font-size: 30px;
+	font-size: 2.0em;
 }
 
 /* 상품 섹션 */
@@ -61,7 +63,7 @@ td[colspan="4"] {
 }
 /* 상품 프로필 */
 .prdProfile h3 {
-    font-size: 28px;
+    font-size: 1.5em;
     color: #583b1f;
     /* 요소 여백 통일 위해 삭제 */
     /* margin-top:30px;
@@ -78,7 +80,7 @@ table{
 	float: right;
 	margin-left: 30px;/* 사진 옆에 공간 띄우기 */
 	/* 이미지 테두리 추가 */
-	border: 1.5px solid #7e7b46;
+	border: 0.1em solid #7e7b46;
 }
 
 .rating {
@@ -88,17 +90,9 @@ table{
 /* 해시태그 스타일 */
 .hashTag {
     display: inline-block;
-    font-size: 14px;
-	color: #666;
     margin-right: 5px; /* 태그 간 간격 */
     padding: 5px;
 }
-
-/* 버튼 스타일 */
-/* 중복되는 설정 제거 */
-/* a {
-    text-decoration: none;
-} */
 
 #addWish, #addCart {
     display: inline-block;
@@ -108,10 +102,12 @@ table{
     color: #fff;
     background-color: #7e7b46;
     transition: background-color 0.3s;
+    width: 200px;
 }
 
 #addWish:hover, #addCart:hover {
-    background-color: #71543d;
+    background-color: #a09d67;
+    transition: background-color 0.3s ease;
 }
 
 /* 상품 정보 */
@@ -135,7 +131,7 @@ table{
 
 .prdInfo h3 {
 	margin-right:30px;
-    font-size: 22px;
+    font-size: 1.5em;
     color: #583b1f;
     margin-bottom: 10px;
 }
@@ -145,7 +141,6 @@ table{
 }
 
 .prdInfo p {
-    font-size: 16px;
     color: #7e7b46;
     margin-bottom: 15px;
 }
@@ -160,11 +155,12 @@ table{
     width: 80%;
     /* 너비 통일 위해 추가 */
     box-sizing: border-box;
+    color: #583b1f;
 }
 
 .reviewWrite label {
 	float: left;
-    font-size: 16px;
+    /* font-size: 16px; */
     color: #583b1f;
     margin-bottom: 5px;
     display: inline-block;
@@ -185,28 +181,30 @@ table{
 }
 
 .reviewWrite select {
-	width: 100px;
-    height: 30px;
+	width: 120px;
     border: 1px solid #ddd;
     border-radius: 5px;
     margin-bottom: 15px;
     /* 배경색 전체 배경과 통일 */
     background: #f7f4ef;
+    padding: 5px;
+    color: #583b1f;
 }
 
 .option {
     float: right;
     text-align: right; 
-    width: 400px;
+    width: 450px;
 }
 
 .option select, .option input[type="date"] {
     display: inline-block;
-    font-size: 13px;
+    /* font-size: 13px; */
     margin: 10px;
     padding: 5px;
     /* 배경색 전체 배경과 통일 */
     background: #f7f4ef;
+    color: #583b1f;
 }
 
 .option label {
@@ -248,6 +246,7 @@ table{
 
 /* 리뷰 목록 */
 .reviews {
+	color: #583b1f;
     margin: 0 auto;
     /* 너비 통일 위해 수정 및 추가 max-width: 1050px; */
     width: 80%;
@@ -266,6 +265,7 @@ table{
     margin: 20px auto;
     padding: 20px;
     /* border-bottom: 0.7px solid #583b1f; */
+    color: #583b1f;
 }
 
 /* 두 번째 항목부터 상단에 border 적용 */
@@ -283,7 +283,7 @@ table{
 
 .reviewItem h3 {
     font-size: 1.5em;
-    color: #333;
+    color: #583b1f;
     margin: 0;
     float: left;
 }
@@ -292,7 +292,6 @@ table{
     color: #583b1f;
     font-weight: bold;
     float: left;
-    font-size: 10px;
     background: #eae6e1;
     border-radius: 5px;
     padding: 5px;
@@ -300,25 +299,9 @@ table{
 
 .reviewItem p {
     font-size: 1em;
-    color: #666;
     float: left;
 }
 
-/* .reviewItem a {
-    float: right;
-}
-
-.reviewItem .reviewImg {
-    display: block;
-    max-width: 200px; 이미지 크기 제한
-    float: right;
-}
-
-.reviewImg {
-    float: right;
-    width: 150px;
-    height: 150px;
-} */
 
 /* 리뷰 영역 배열에 맞추기 위한 수정 및 추가 297~318*/
 .reviewItem img {
@@ -356,22 +339,27 @@ table{
 .pagination {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    /* 여백 높이 수정 */
+    margin-top: 10%;
 }
 
-.pagination a {
+.pagination button {
     display: inline-block;
     padding: 10px 15px;
     margin: 0 5px;
     border-radius: 5px;
     color: #583b1f;
-    /* 배경색에 맞게 수정 background-color: #e5e0da; */
     background-color: transparent;
     transition: background-color 0.3s;
+    /* 글자 크기 수정 */
+    font-size: 1.0em;
+    /* 페이지네이션 밑 여백 추가 */
+    margin-bottom: 20px;
+    border: none;
 }
 
-.pagination a:hover:not(.disabled) {
-    background-color: #d0c9c2;
+.pagination button:hover:not(.disabled) {
+    background-color: #e5e0da;
 }
 
 .disabled {
@@ -380,13 +368,12 @@ table{
 }
 
 .btn {
-  max-width: 150px;
+  width: 200px;
   height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
   /* font-size: 15px; */
-  font-size: 0.9em;
   font-weight: 300;
   text-decoration: none;
   text-align: center;
@@ -398,7 +385,6 @@ table{
 }
 
 .btnFilled{
-	width:150px;
 	background-color:#583b1f;
 	color:#e5e0da;
 	border:#583b1f;
@@ -417,14 +403,12 @@ table{
 /* 버튼 hover */
 .btnFilled:hover {
     background-color: #71543d;
-    font-weight: 900;
     transition: background-color 0.3s ease;
 }
 
 .btnUnfilled:hover {
     background-color: #71543d;  
     color: white;
-    font-weight:900;
     transition: background-color 0.3s ease;
     border: solid 1.5px #71543d; 
 }
@@ -513,5 +497,5 @@ section{
     float: right;
     border: none;
     background: transparent;
-    font-size: 0.9em;
+/*     font-size: 0.9em; */
 } 

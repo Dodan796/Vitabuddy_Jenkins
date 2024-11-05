@@ -223,7 +223,7 @@
 								<option value="#소화가 편해요">#소화가 편해요</option>
 								<option value="#근육회복에 좋아요">#근육회복에 좋아요</option>
 								<option value="#탈모예방에 좋아요">#탈모예방에 좋아요</option>
-								<option value="#눈이 편안해요">눈이 편안해요</option>
+								<option value="#눈이 편안해요">#눈이 편안해요</option>
 								<c:forEach var="tag" items="${taglist}">
 									<option value="${tag.tagNo}">${tag.tagName}</option>
 								</c:forEach>
@@ -318,12 +318,12 @@
 						<!-- 기간 및 해시태그 -->
 						<tr class="supInfo">
 							<!-- 테이블 구조 수정 colspan 3 >2 -->
-							<td colspan="2"></td>
+							<td></td>
 							<!-- 복용기간 칸 합침 -->
 							<td colspan="3">복용기간: <fmt:formatDate
 									value="${review.startDate}" pattern="yyyy-MM-dd" /> ~ <fmt:formatDate
 									value="${review.endDate}" pattern="yyyy-MM-dd" /></td>
-							<td>해시태그: ${review.reviewHashtag}</td>
+							<td  colspan="2">해시태그: ${review.reviewHashtag}</td>
 							<td>
 								<div class="rate">
 									<c:forEach var="i" begin="1" end="5">

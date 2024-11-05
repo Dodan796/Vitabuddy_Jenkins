@@ -11,23 +11,27 @@
         <script src="<c:url value='/js/searchZip.js'/>"></script> <!-- searchZip.js 우편번호 찾기 스크립트 삽입 -->
         <script src="https://kit.fontawesome.com/567f0760c2.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        
+
         <link rel="stylesheet" type="text/css" href="<c:url value='/css/infoChange.css'/>" >   <!-- 로컬 sts 환경에 맞춰 경로 지정 -->
         <c:import url="/WEB-INF/views/layout/head.jsp"/> 
         <meta charset="UTF-8"> 
         <title>회원 정보/ 영양제 관리</title>
     </head>
-    
+
     <body>
         <c:import url="/WEB-INF/views/layout/top.jsp"/> 
         <section id="wrap"> 
             <div class="container">
-                <div class="headers"> 
+                <!-- <div class="headers"> 
                     <h1>회원 정보/ 영양제 관리</h1>
-                </div> 
-                
+                </div>  -->
+
 				<div class="temp">
 					<div class="left">
+					
+					<div class="headers"> 
+                    	<h1>회원 정보 관리</h1>
+                	</div> 
 						<form method="post" id="information" action="<c:url value='/member/myInfoUpdate'/>" >  
 							<div class="horizontal_box">
 								<label>이름</label>
@@ -43,9 +47,9 @@
 								<input type="email" name="userEmail" id="userEmail" onchange="emailCheck()"  value="${myInfo.userEmail}" required />
 								<p id="emOk"></p>
 								<label>전화 번호 변경</label>
-								
+
 								<div class="phone-number">
-								
+
 									<input type="text" name="userPh1" id="userPh1" placeholder="010" maxlength="3" value="${fn:split(myInfo.userPh,'-')[0]}" required/>
 									 - 
 									<input type="text" name="userPh2" id="userPh2" placeholder="1111" maxlength="4" value="${fn:split(myInfo.userPh,'-')[1]}" required/>
@@ -67,11 +71,16 @@
 									<input type="text" id="userAddress2" name="userAddress2"  value="${myInfo.userAddress2}" required/>
 								</div>
 							</div>
-							
+
 					</div>
-							
+					
+					<div class="divider"></div>
+
 							<!-- 여기서부터 영양제 정보 수정 변경 - 팀장님 파트 -->
 <!--  temp div, 폼 태그 내부 button 앞으로 이동  --><div class="right">
+					<div class="headers"> 
+                    	<h1>영양제 정보 관리</h1>
+                	</div> 
                         <div class="search-box">
 <!--       위치 이동(85)                    <i class="fas fa-search"></i> -->
                             <input type="text" id="keyword" placeholder="Search">
@@ -89,7 +98,7 @@
                         </div>
                         <!-- 검색 결과가 표시될 영역 -->
                         <div id="supplementList"></div>
-                        
+
                         <!-- 복용 중인 영양제 -->
                         <!-- 새로운 div supList 생성 -->
                         <div class="supList">
