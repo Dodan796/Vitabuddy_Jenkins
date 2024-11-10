@@ -188,9 +188,9 @@
 	<select id="pagingReviewList" parameterType="map" resultType="com.example.vitabuddy.model.ReviewVO">
 	    <![CDATA[
 	        SELECT * FROM (
-	            SELECT ROWNUM AS rn, reviewTitle, userId, supId, rating, reviewHashtag, reviewDate, content, startDate, endDate, reviewImg
+	            SELECT ROWNUM AS rn, reviewNo, reviewTitle, userId, supId, rating, reviewHashtag, reviewDate, content, startDate, endDate, reviewImg
 	            FROM (
-	                SELECT reviewTitle, userId, supId, rating, reviewHashtag, reviewDate, content, startDate, endDate, reviewImg
+	                SELECT reviewNo, reviewTitle, userId, supId, rating, reviewHashtag, reviewDate, content, startDate, endDate, reviewImg
 	                FROM Review
 	                WHERE supId = #{supId}
 	                ORDER BY reviewDate DESC

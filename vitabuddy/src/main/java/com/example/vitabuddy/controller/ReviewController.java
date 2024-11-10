@@ -64,22 +64,30 @@ public class ReviewController {
 
         // 이미지 파일 처리
         StringBuilder imageNames = new StringBuilder();
-        if (reviewImgFiles != null && !reviewImgFiles.isEmpty()) {
+        
+        String DEFAULT_IMAGE = "defaultImage.PNG";  // 기본 이미지 파일 이름
+        if (reviewImgFiles == null || reviewImgFiles.isEmpty()) {  //로직 추가
+        	
+        	imageNames.append(DEFAULT_IMAGE);
+        	
+        } 
+        else if (reviewImgFiles != null && !reviewImgFiles.isEmpty()) {
             for (int i = 0; i < Math.min(3, reviewImgFiles.size()); i++) {
-                MultipartFile file = reviewImgFiles.get(i);
+                MultipartFile file = reviewImgFiles.get(i);  //이미지 처리 
+                
                 if (!file.isEmpty()) {
                     String originalFilename = file.getOriginalFilename();
                     String extension = originalFilename.substring(originalFilename.lastIndexOf("."));
                     String baseName = originalFilename.substring(0, originalFilename.lastIndexOf("."));
                     String timestamp = String.valueOf(System.currentTimeMillis());
-                    String uniqueFileName = baseName + "_" + timestamp + extension;
+                    String uniqueFileName = baseName + "_" + timestamp + extension; 
 
                     try {
                         File destFile = new File(UPLOAD_DIR + uniqueFileName);
                         file.transferTo(destFile);
                         imageNames.append(uniqueFileName);
                         if (i < Math.min(3, reviewImgFiles.size()) - 1) {
-                            imageNames.append(";");
+                            imageNames.append(";"); 
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -88,7 +96,9 @@ public class ReviewController {
                 }
             }
         }
-        reviewVO.setReviewImg(imageNames.length() > 0 ? imageNames.toString() : "");
+        //reviewVO.setReviewImg(imageNames.length() > 0 ? imageNames.toString() : "");
+        reviewVO.setReviewImg(imageNames.length() > 0 ? imageNames.toString() : DEFAULT_IMAGE);
+        System.out.println("이미지 출력 테스트 코드 입니다. " + reviewVO.getReviewImg());  //출력 test코드 추가
 
         int result = reviewService.insertReview(reviewVO);
         if (result == -1) {
@@ -115,6 +125,7 @@ public class ReviewController {
     }
 
 	// 3. 리뷰 수정
+	@SuppressWarnings("unused")
 	@PostMapping("/supplementDetail/{supId}/review/{reviewNo}/edit")
 	public String updateReview(@PathVariable("supId") int supId, 
 	                           @PathVariable("reviewNo") String reviewNo,
@@ -131,6 +142,8 @@ public class ReviewController {
 	    if (userId == null) {
 	        return "redirect:/intro";
 	    }
+	    
+	    ReviewVO existingReview = reviewService.getReviewByNo(reviewNo);  // 로직 추가 - id로 리뷰 가지고 오기
 
 	    ReviewVO reviewVO = new ReviewVO();
 	    reviewVO.setReviewNo(reviewNo);
@@ -143,9 +156,24 @@ public class ReviewController {
 	    reviewVO.setStartDate(startDate);
 	    reviewVO.setEndDate(endDate);
 	    reviewVO.setContent(content);
-
+	    
+	    
+	    
 	    StringBuilder imageNames = new StringBuilder();
-	    if (reviewImgFiles != null && !reviewImgFiles.isEmpty()) {
+	    String DEFAULT_IMAGE = "defaultImage.PNG";  // 기본 이미지 파일 이름
+	    
+	    //String existingImages = reviewVO.getReviewImg();  // 기존에 입력했던 리뷰 이미지 얻어오기
+	    //System.out.println("기존에 입력했던 이미지 입니다. " + existingImages);
+	    
+        if (reviewImgFiles == null || reviewImgFiles.isEmpty()) {  //로직 추가
+        	  // 기존의 이미지가 있는 경우 그대로 유지하고, 없는 경우만 기본 이미지 설정
+            if (existingReview.getReviewImg() != null && !existingReview.getReviewImg().isEmpty()) {
+                imageNames.append(existingReview.getReviewImg());
+            } else {
+                imageNames.append(DEFAULT_IMAGE);
+            }
+        } 
+        else if (reviewImgFiles != null && !reviewImgFiles.isEmpty()) {
 	        for (int i = 0; i < Math.min(3, reviewImgFiles.size()); i++) {
 	            MultipartFile file = reviewImgFiles.get(i);
 	            if (!file.isEmpty()) {
@@ -170,8 +198,19 @@ public class ReviewController {
 	        }
 	    }
 
-	    reviewVO.setReviewImg(imageNames.length() > 0 ? imageNames.toString() : "");
-
+	    //수정
+	    //reviewVO.setReviewImg(imageNames.length() > 0 ? imageNames.toString() : DEFAULT_IMAGE);
+        // 기존에 저장된 이미지를 유지하도록 설정 - 수정 시, 사용자가 업로드한 사진이 기본 defaultImage 로 변경되는 이슈
+        //로직 추가
+        if (imageNames.length() > 0) {
+            reviewVO.setReviewImg(imageNames.toString());  // 새로 추가된 이미지가 있으면 그 값을 설정
+        } else {
+            // 새 이미지가 없을 경우 기존 이미지를 유지
+            reviewVO.setReviewImg(existingReview.getReviewImg() != null ? existingReview.getReviewImg() : DEFAULT_IMAGE);
+        }
+        
+        
+        
 	    int result = reviewService.updateReview(reviewVO);
 	    if (result == 0) {
 	        return "error/fileUploadError";
@@ -179,6 +218,10 @@ public class ReviewController {
 
 	    return "redirect:/api/supplement/supplementDetail/" + supId;
 	}
+	
+	
+	
+	
 
 	// 4. 리뷰 수정 폼 조회
 	@GetMapping("/supplementDetail/{supId}/review/{reviewNo}/editForm")
@@ -187,21 +230,18 @@ public class ReviewController {
 	                                 Model model) {
 
 	    ReviewVO review = reviewService.getReviewByNo(reviewNo);
-		/*
-		 * if (review == null) { throw new
-		 * IllegalArgumentException("해당 리뷰를 찾을 수 없습니다. reviewNo: " + reviewNo); }
-		 */
+	    if (review == null) {
+	        throw new IllegalArgumentException("해당 리뷰를 찾을 수 없습니다. reviewNo: " + reviewNo);
+	    }
 
 	    SupplementDetailVO sup = supplementDetailService.getSupplementDetailById(supId);
-		/*
-		 * if (sup == null) { throw new
-		 * IllegalArgumentException("해당 보충제를 찾을 수 없습니다. supId: " + supId); }
-		 */
+	    if (sup == null) {
+	        throw new IllegalArgumentException("해당 보충제를 찾을 수 없습니다. supId: " + supId);
+	    }
 
 	    model.addAttribute("review", review);
 	    model.addAttribute("sup", sup);
 
 	    return "supplement/editReview";
 	}
-	
 }
