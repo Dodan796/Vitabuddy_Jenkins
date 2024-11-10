@@ -41,7 +41,7 @@ public class SupplementDetailController {
         } else {
             model.addAttribute("supImgBase64", "");
         }
-
+        
         List<ReviewVO> reviews = reviewService.pagingReviewList(supplementDetailId, page);
         model.addAttribute("reviewList", reviews);
 
@@ -52,6 +52,10 @@ public class SupplementDetailController {
         model.addAttribute("totalPages", totalPages);
         model.addAttribute("supplementDetail", supplementDetail);
 
+       // 상위 2개 해시태그 출력
+ 		List<ReviewVO> topHashtags = reviewService.getHashtagsByReview(supplementDetailId);
+ 		model.addAttribute("topHashtags", topHashtags);
+        
         return "supplement/supplementDetail"; 
     }
 

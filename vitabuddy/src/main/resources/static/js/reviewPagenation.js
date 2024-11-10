@@ -1,6 +1,12 @@
+/*
+* pagination 코드
+*/
+
 function goToPage(page) {
     const supplementId = $('#supplementDetail').data('supplement-id');
-    const userId = $('#userSessionInfo').data('user-id'); // 세션에서 가져온 userId
+    
+    //1110 테스트 코드 : supplementDetail.jsp 의 <head></head> 내부에 <script></script>로 sessionScope.sid 설정 : 세션 아이디값이 js까지 전달된다.
+    console.log("User ID from JSP session, 자바스크립트 변수로 출력:", userId); // 세션 userId가 올바르게 전달되는지 확인
 
     $.ajax({
         url: `/api/supplement/supplementDetail/${supplementId}/reviews`,
@@ -8,14 +14,18 @@ function goToPage(page) {
         data: { page: page },
         success: function (response) {
             console.log("Ajax Response:", response); // 응답 데이터 확인
-
+            
             const reviewListContainer = $('#reviewListContainer');
             reviewListContainer.empty();
 
             response.reviewList.forEach(review => {
+            
+            	// 1110 test 코드 : yurim0000 출력
+            	console.log("Review User ID:", review.userId); 
+            	
                 const reviewHtml = `
                     <table class="reviewItem">
-                        <tr>
+                        <tr> 
                             <td colspan="5"><h3>${review.reviewTitle}</h3></td>
                             <td colspan="2">
                                 ${review.userId === userId ? `

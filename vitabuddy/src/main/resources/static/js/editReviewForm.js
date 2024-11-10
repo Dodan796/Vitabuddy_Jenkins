@@ -4,7 +4,7 @@
 
 // 부모 페이지에서 수정 버튼 클릭 시 팝업 창 열기
 $(document).ready(function () {
-  $(".editButton").on("click", function (event) {
+  $("#reviewListContainer").on("click", ".editButton", function (event) {  //1110 동적으로 생성된 리뷰 리스트 수정
     event.preventDefault(); // 기본 동작 방지
 
     const supId = $(this).data("sup-id");

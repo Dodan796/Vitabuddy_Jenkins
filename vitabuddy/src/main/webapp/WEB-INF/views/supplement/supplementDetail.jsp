@@ -19,6 +19,10 @@
 <!-- 찜목록 추가, 장바구니 추가 -->
 <script src="<c:url value='/js/addWish.js'/>"></script>
 <script src="<c:url value='/js/addCartSupDetail.js'/>"></script>
+<script>
+    const userId = "${sessionScope.sid}"; // 서버 세션에서 가져온 userId를 JavaScript 변수에 저장
+    console.log("JSP User ID from session:", userId); // 콘솔에 userId 출력
+</script>
 <link rel="stylesheet" type="text/css"
 	href="<c:url value='/css/supplementDetail.css'/>">
 <c:import url="/WEB-INF/views/layout/head.jsp" />

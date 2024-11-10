@@ -2,7 +2,7 @@
  * 
  */
 $(document).ready(function () {
-    $('.deleteReview').on('click', function () {
+    $("#reviewListContainer").on("click", ".deleteReview", function () {  //1110 삭제
         let answer = confirm("리뷰를 삭제하시겠습니까?");
         if (answer) {
             const reviewNo = $(this).data('review-id');
